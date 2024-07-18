@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Artan_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Education">
+    <Key>
+      <PropertyRef Name="EducationID" />
+    </Key>
+    <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Persons">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="EducationID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="Condition" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="PositionID" Type="int" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Position">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Persons">
+    <Key>
+      <PropertyRef Name="PersonID" />
+      <PropertyRef Name="EducationID" />
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PersonID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="101" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" />
+    <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="EducationID" Type="int" Nullable="false" />
+    <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="Condition" Type="varchar" MaxLength="8" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+    <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PersonID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_PersonInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="BirthDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="EducationID" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Condition" Type="bit" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="PositionID" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PersonSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_PersonUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PersonID" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="BirthDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="EducationID" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Condition" Type="bit" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="PositionID" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Artan_DBModelStoreContainer">
+    <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Persons].[PersonID] AS [PersonID], 
+    [vw_Persons].[FirstName] AS [FirstName], 
+    [vw_Persons].[LastName] AS [LastName], 
+    [vw_Persons].[FullName] AS [FullName], 
+    [vw_Persons].[Gender] AS [Gender], 
+    [vw_Persons].[BirthDate] AS [BirthDate], 
+    [vw_Persons].[EducationID] AS [EducationID], 
+    [vw_Persons].[EducationTitle] AS [EducationTitle], 
+    [vw_Persons].[Email] AS [Email], 
+    [vw_Persons].[Mobile] AS [Mobile], 
+    [vw_Persons].[Condition] AS [Condition], 
+    [vw_Persons].[Address] AS [Address], 
+    [vw_Persons].[PositionID] AS [PositionID], 
+    [vw_Persons].[PositionTitle] AS [PositionTitle], 
+    [vw_Persons].[UserName] AS [UserName], 
+    [vw_Persons].[Password] AS [Password], 
+    [vw_Persons].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Persons] AS [vw_Persons]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

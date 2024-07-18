@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Artan_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Education">
+          <Key>
+            <PropertyRef Name="EducationID" />
+          </Key>
+          <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="Condition" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Position">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="EducationID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="101" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="BirthDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationID" Type="int" Nullable="false" />
+          <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="Condition" Type="varchar" MaxLength="8" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_PersonInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="bit" Mode="In" />
+          <Parameter Name="BirthDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="EducationID" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Condition" Type="bit" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="PositionID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_PersonSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_PersonUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="bit" Mode="In" />
+          <Parameter Name="BirthDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="EducationID" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Condition" Type="bit" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="PositionID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Artan_DBModelStoreContainer">
+          <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Persons].[PersonID] AS [PersonID], 
+    [vw_Persons].[FirstName] AS [FirstName], 
+    [vw_Persons].[LastName] AS [LastName], 
+    [vw_Persons].[FullName] AS [FullName], 
+    [vw_Persons].[Gender] AS [Gender], 
+    [vw_Persons].[BirthDate] AS [BirthDate], 
+    [vw_Persons].[EducationID] AS [EducationID], 
+    [vw_Persons].[EducationTitle] AS [EducationTitle], 
+    [vw_Persons].[Email] AS [Email], 
+    [vw_Persons].[Mobile] AS [Mobile], 
+    [vw_Persons].[Condition] AS [Condition], 
+    [vw_Persons].[Address] AS [Address], 
+    [vw_Persons].[PositionID] AS [PositionID], 
+    [vw_Persons].[PositionTitle] AS [PositionTitle], 
+    [vw_Persons].[UserName] AS [UserName], 
+    [vw_Persons].[Password] AS [Password], 
+    [vw_Persons].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Persons] AS [vw_Persons]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Artan_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Education">
+          <Key>
+            <PropertyRef Name="EducationID" />
+          </Key>
+          <Property Name="EducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Condition" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Position">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="EducationID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationID" Type="Int32" Nullable="false" />
+          <Property Name="EducationTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Condition" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="PositionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Artan_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" />
+          <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" />
+          <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" />
+          <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" />
+          <FunctionImport Name="sp_PersonDelete">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PersonInsert">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="Boolean" />
+            <Parameter Name="BirthDate" Mode="In" Type="String" />
+            <Parameter Name="EducationID" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Condition" Mode="In" Type="Boolean" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="PositionID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PersonSearch" ReturnType="Collection(Artan_DBModel.sp_PersonSearch_Result)">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PersonUpdate">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="Boolean" />
+            <Parameter Name="BirthDate" Mode="In" Type="String" />
+            <Parameter Name="EducationID" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Condition" Mode="In" Type="Boolean" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="PositionID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_PersonSearch_Result">
+          <Property Type="Int32" Name="PersonID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="BirthDate" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="EducationID" Nullable="false" />
+          <Property Type="String" Name="EducationTitle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Condition" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="PositionID" Nullable="false" />
+          <Property Type="String" Name="PositionTitle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Artan_DBModelStoreContainer" CdmEntityContainer="Artan_DBEntities">
+          <EntitySetMapping Name="tbl_Education">
+            <EntityTypeMapping TypeName="Artan_DBModel.tbl_Education">
+              <MappingFragment StoreEntitySet="tbl_Education">
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="EducationTitle" ColumnName="EducationTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Persons">
+            <EntityTypeMapping TypeName="Artan_DBModel.tbl_Persons">
+              <MappingFragment StoreEntitySet="tbl_Persons">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Position">
+            <EntityTypeMapping TypeName="Artan_DBModel.tbl_Position">
+              <MappingFragment StoreEntitySet="tbl_Position">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Persons">
+            <EntityTypeMapping TypeName="Artan_DBModel.vw_Persons">
+              <MappingFragment StoreEntitySet="vw_Persons">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="EducationTitle" ColumnName="EducationTitle" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_PersonDelete" FunctionName="Artan_DBModel.Store.sp_PersonDelete" />
+          <FunctionImportMapping FunctionImportName="sp_PersonInsert" FunctionName="Artan_DBModel.Store.sp_PersonInsert" />
+          <FunctionImportMapping FunctionImportName="sp_PersonSearch" FunctionName="Artan_DBModel.Store.sp_PersonSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Artan_DBModel.sp_PersonSearch_Result">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="EducationTitle" ColumnName="EducationTitle" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PersonUpdate" FunctionName="Artan_DBModel.Store.sp_PersonUpdate" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

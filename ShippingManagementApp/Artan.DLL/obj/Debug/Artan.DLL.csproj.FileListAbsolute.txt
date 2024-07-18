@@ -1,0 +1,12 @@
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\Artan.DLL.dll.config
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\Artan.DLL.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\Artan.DLL.pdb
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\EntityFramework.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\EntityFramework.xml
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\obj\Debug\Artan.DLL.csproj.AssemblyReference.cache
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\obj\Debug\Artan.DLL.csproj.CoreCompileInputs.cache
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\obj\Debug\Artan.DLL.csproj.CopyComplete
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\obj\Debug\Artan.DLL.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.DLL\obj\Debug\Artan.DLL.pdb

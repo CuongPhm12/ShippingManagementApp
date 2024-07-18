@@ -1,0 +1,6 @@
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\bin\Debug\Artan.BLL.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\bin\Debug\Artan.BLL.pdb
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\obj\Debug\Artan.BLL.csproj.AssemblyReference.cache
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\obj\Debug\Artan.BLL.csproj.CoreCompileInputs.cache
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\obj\Debug\Artan.BLL.dll
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Artan.BLL\obj\Debug\Artan.BLL.pdb
