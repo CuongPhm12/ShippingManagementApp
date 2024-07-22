@@ -79,6 +79,7 @@ namespace ShippingManagementApp
         {
 
             btnMini(btnCompanies, panelCustomers);
+            LoadForm(new frmCompanies());
             //pnlOpen(panelCustomers, btnCompanies);
         }
 

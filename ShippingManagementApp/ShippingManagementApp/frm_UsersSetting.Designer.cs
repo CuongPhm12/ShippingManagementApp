@@ -30,36 +30,48 @@ namespace ShippingManagementApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_UsersSetting));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpPanelTop = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelAdd = new System.Windows.Forms.Panel();
+            this.panelBirthDate = new System.Windows.Forms.Panel();
+            this.dateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtPersonID = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panelGender = new System.Windows.Forms.Label();
-            this.panelBirthDate = new System.Windows.Forms.Label();
             this.btnPassword = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnRe_Password = new System.Windows.Forms.Button();
-            this.dateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.lbRe_Password = new System.Windows.Forms.Label();
             this.panelRe_Password = new System.Windows.Forms.Panel();
             this.txtRe_Password = new System.Windows.Forms.TextBox();
+            this.lbEducation = new System.Windows.Forms.Label();
             this.lbPosition = new System.Windows.Forms.Label();
             this.panelPassword = new System.Windows.Forms.Panel();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.panelEducation = new System.Windows.Forms.Panel();
+            this.cbEducation = new System.Windows.Forms.ComboBox();
             this.lbPassword = new System.Windows.Forms.Label();
             this.panelPosition = new System.Windows.Forms.Panel();
             this.cbPosition = new System.Windows.Forms.ComboBox();
@@ -82,29 +94,19 @@ namespace ShippingManagementApp
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
+            this.lbPersonID = new System.Windows.Forms.Label();
             this.lbFirstName = new System.Windows.Forms.Label();
             this.panelFirstName = new System.Windows.Forms.Panel();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.panelEducation = new System.Windows.Forms.Panel();
-            this.cbEducation = new System.Windows.Forms.ComboBox();
-            this.lbEducation = new System.Windows.Forms.Label();
-            this.txtPersonID = new System.Windows.Forms.TextBox();
-            this.lbPersonID = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpPanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelAdd.SuspendLayout();
+            this.panelBirthDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelRe_Password.SuspendLayout();
             this.panelPassword.SuspendLayout();
+            this.panelEducation.SuspendLayout();
             this.panelPosition.SuspendLayout();
             this.panelEmail.SuspendLayout();
             this.panelAddress.SuspendLayout();
@@ -112,7 +114,6 @@ namespace ShippingManagementApp
             this.panelMobile.SuspendLayout();
             this.panelLastName.SuspendLayout();
             this.panelFirstName.SuspendLayout();
-            this.panelEducation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpPanelTop
@@ -131,7 +132,7 @@ namespace ShippingManagementApp
             this.tlpPanelTop.Controls.Add(this.btnDelete, 2, 0);
             this.tlpPanelTop.Controls.Add(this.btnEdit, 1, 0);
             this.tlpPanelTop.Controls.Add(this.btnAdd, 0, 0);
-            this.tlpPanelTop.Controls.Add(this.textBox1, 1, 1);
+            this.tlpPanelTop.Controls.Add(this.txtSearch, 1, 1);
             this.tlpPanelTop.Controls.Add(this.pictureBox1, 6, 1);
             this.tlpPanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpPanelTop.Location = new System.Drawing.Point(3, 3);
@@ -159,6 +160,7 @@ namespace ShippingManagementApp
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnRefresh
             // 
@@ -177,6 +179,7 @@ namespace ShippingManagementApp
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnDelete
             // 
@@ -195,6 +198,7 @@ namespace ShippingManagementApp
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -234,14 +238,15 @@ namespace ShippingManagementApp
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.tlpPanelTop.SetColumnSpan(this.textBox1, 5);
-            this.textBox1.Location = new System.Drawing.Point(90, 66);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(764, 27);
-            this.textBox1.TabIndex = 5;
+            this.tlpPanelTop.SetColumnSpan(this.txtSearch, 5);
+            this.txtSearch.Location = new System.Drawing.Point(90, 66);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(764, 27);
+            this.txtSearch.TabIndex = 5;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // pictureBox1
             // 
@@ -256,15 +261,13 @@ namespace ShippingManagementApp
             // 
             // panelAdd
             // 
-            this.panelAdd.Controls.Add(this.txtPersonID);
             this.panelAdd.Controls.Add(this.dgvUsers);
+            this.panelAdd.Controls.Add(this.txtPersonID);
             this.panelAdd.Controls.Add(this.btnCancel);
             this.panelAdd.Controls.Add(this.btnSave);
             this.panelAdd.Controls.Add(this.panelGender);
-            this.panelAdd.Controls.Add(this.panelBirthDate);
             this.panelAdd.Controls.Add(this.btnPassword);
             this.panelAdd.Controls.Add(this.btnRe_Password);
-            this.panelAdd.Controls.Add(this.dateBirthDate);
             this.panelAdd.Controls.Add(this.groupBox1);
             this.panelAdd.Controls.Add(this.lbRe_Password);
             this.panelAdd.Controls.Add(this.panelRe_Password);
@@ -279,7 +282,6 @@ namespace ShippingManagementApp
             this.panelAdd.Controls.Add(this.lbAddress);
             this.panelAdd.Controls.Add(this.lbUsername);
             this.panelAdd.Controls.Add(this.panelAddress);
-            this.panelAdd.Controls.Add(this.lbBirthDate);
             this.panelAdd.Controls.Add(this.lbMobile);
             this.panelAdd.Controls.Add(this.lbLastName);
             this.panelAdd.Controls.Add(this.panelUsername);
@@ -291,6 +293,8 @@ namespace ShippingManagementApp
             this.panelAdd.Controls.Add(this.lbPersonID);
             this.panelAdd.Controls.Add(this.lbFirstName);
             this.panelAdd.Controls.Add(this.panelFirstName);
+            this.panelAdd.Controls.Add(this.panelBirthDate);
+            this.panelAdd.Controls.Add(this.lbBirthDate);
             this.panelAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAdd.Location = new System.Drawing.Point(3, 103);
             this.panelAdd.Margin = new System.Windows.Forms.Padding(0);
@@ -298,6 +302,28 @@ namespace ShippingManagementApp
             this.panelAdd.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.panelAdd.Size = new System.Drawing.Size(944, 647);
             this.panelAdd.TabIndex = 1;
+            // 
+            // panelBirthDate
+            // 
+            this.panelBirthDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelBirthDate.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelBirthDate.Controls.Add(this.dateBirthDate);
+            this.panelBirthDate.Location = new System.Drawing.Point(640, 126);
+            this.panelBirthDate.Margin = new System.Windows.Forms.Padding(0);
+            this.panelBirthDate.Name = "panelBirthDate";
+            this.panelBirthDate.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panelBirthDate.Size = new System.Drawing.Size(155, 30);
+            this.panelBirthDate.TabIndex = 2;
+            // 
+            // dateBirthDate
+            // 
+            this.dateBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateBirthDate.Location = new System.Drawing.Point(0, 0);
+            this.dateBirthDate.Name = "dateBirthDate";
+            this.dateBirthDate.Size = new System.Drawing.Size(155, 27);
+            this.dateBirthDate.TabIndex = 8;
+            this.dateBirthDate.Leave += new System.EventHandler(this.dateBirthDate_Leave);
+            this.dateBirthDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dateBirthDate_MouseDown);
             // 
             // dgvUsers
             // 
@@ -309,14 +335,14 @@ namespace ShippingManagementApp
             this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(185)))), ((int)(((byte)(47)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(185)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.ColumnHeadersHeight = 45;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -343,8 +369,85 @@ namespace ShippingManagementApp
             this.dgvUsers.RowTemplate.DividerHeight = 2;
             this.dgvUsers.RowTemplate.Height = 30;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(924, 82);
+            this.dgvUsers.Size = new System.Drawing.Size(924, 48);
             this.dgvUsers.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "PersonID";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 60;
+            // 
+            // FullName
+            // 
+            this.FullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "Full Name";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "User Name";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // BirthDate
+            // 
+            this.BirthDate.DataPropertyName = "BirthDate";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BirthDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.BirthDate.HeaderText = "Birth Date";
+            this.BirthDate.Name = "BirthDate";
+            this.BirthDate.ReadOnly = true;
+            this.BirthDate.Width = 110;
+            // 
+            // Gender
+            // 
+            this.Gender.DataPropertyName = "Gender";
+            this.Gender.HeaderText = "Gender";
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            this.Gender.Width = 90;
+            // 
+            // Mobile
+            // 
+            this.Mobile.DataPropertyName = "Mobile";
+            this.Mobile.HeaderText = "Mobile";
+            this.Mobile.Name = "Mobile";
+            this.Mobile.ReadOnly = true;
+            this.Mobile.Width = 120;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 150;
+            // 
+            // Address
+            // 
+            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // txtPersonID
+            // 
+            this.txtPersonID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPersonID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPersonID.Location = new System.Drawing.Point(205, 123);
+            this.txtPersonID.Multiline = true;
+            this.txtPersonID.Name = "txtPersonID";
+            this.txtPersonID.ReadOnly = true;
+            this.txtPersonID.Size = new System.Drawing.Size(260, 27);
+            this.txtPersonID.TabIndex = 14;
             // 
             // btnCancel
             // 
@@ -394,16 +497,6 @@ namespace ShippingManagementApp
             this.panelGender.Size = new System.Drawing.Size(269, 3);
             this.panelGender.TabIndex = 12;
             // 
-            // panelBirthDate
-            // 
-            this.panelBirthDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelBirthDate.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelBirthDate.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelBirthDate.Location = new System.Drawing.Point(640, 192);
-            this.panelBirthDate.Name = "panelBirthDate";
-            this.panelBirthDate.Size = new System.Drawing.Size(155, 3);
-            this.panelBirthDate.TabIndex = 11;
-            // 
             // btnPassword
             // 
             this.btnPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -448,17 +541,6 @@ namespace ShippingManagementApp
             this.btnRe_Password.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRe_Password.UseVisualStyleBackColor = false;
             this.btnRe_Password.Click += new System.EventHandler(this.btnRe_Password_Click);
-            // 
-            // dateBirthDate
-            // 
-            this.dateBirthDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateBirthDate.Location = new System.Drawing.Point(640, 131);
-            this.dateBirthDate.Name = "dateBirthDate";
-            this.dateBirthDate.Size = new System.Drawing.Size(155, 27);
-            this.dateBirthDate.TabIndex = 8;
-            this.dateBirthDate.Leave += new System.EventHandler(this.dateBirthDate_Leave);
-            this.dateBirthDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dateBirthDate_MouseDown);
             // 
             // groupBox1
             // 
@@ -531,6 +613,17 @@ namespace ShippingManagementApp
             this.txtRe_Password.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtRe_Password_MouseClick);
             this.txtRe_Password.Leave += new System.EventHandler(this.txtRe_Password_Leave);
             // 
+            // lbEducation
+            // 
+            this.lbEducation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbEducation.AutoSize = true;
+            this.lbEducation.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEducation.Location = new System.Drawing.Point(535, 174);
+            this.lbEducation.Name = "lbEducation";
+            this.lbEducation.Size = new System.Drawing.Size(83, 20);
+            this.lbEducation.TabIndex = 6;
+            this.lbEducation.Text = "Education";
+            // 
             // lbPosition
             // 
             this.lbPosition.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -564,6 +657,36 @@ namespace ShippingManagementApp
             this.txtPassword.TabIndex = 0;
             this.txtPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPassword_MouseClick);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
+            // 
+            // panelEducation
+            // 
+            this.panelEducation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelEducation.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelEducation.Controls.Add(this.cbEducation);
+            this.panelEducation.Location = new System.Drawing.Point(640, 169);
+            this.panelEducation.Margin = new System.Windows.Forms.Padding(0);
+            this.panelEducation.Name = "panelEducation";
+            this.panelEducation.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panelEducation.Size = new System.Drawing.Size(155, 30);
+            this.panelEducation.TabIndex = 1;
+            // 
+            // cbEducation
+            // 
+            this.cbEducation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbEducation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEducation.FormattingEnabled = true;
+            this.cbEducation.Items.AddRange(new object[] {
+            "__Select__",
+            "High School",
+            "Diplam\t",
+            "Bachelor",
+            "PhP"});
+            this.cbEducation.Location = new System.Drawing.Point(0, 0);
+            this.cbEducation.Name = "cbEducation";
+            this.cbEducation.Size = new System.Drawing.Size(155, 29);
+            this.cbEducation.TabIndex = 0;
+            this.cbEducation.Leave += new System.EventHandler(this.cbEducation_Leave);
+            this.cbEducation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbEducation_MouseDown);
             // 
             // lbPassword
             // 
@@ -691,7 +814,7 @@ namespace ShippingManagementApp
             this.lbBirthDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbBirthDate.AutoSize = true;
             this.lbBirthDate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBirthDate.Location = new System.Drawing.Point(554, 134);
+            this.lbBirthDate.Location = new System.Drawing.Point(535, 126);
             this.lbBirthDate.Name = "lbBirthDate";
             this.lbBirthDate.Size = new System.Drawing.Size(80, 20);
             this.lbBirthDate.TabIndex = 2;
@@ -823,6 +946,17 @@ namespace ShippingManagementApp
             this.lbTitle.TabIndex = 2;
             this.lbTitle.Text = "Add User";
             // 
+            // lbPersonID
+            // 
+            this.lbPersonID.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbPersonID.AutoSize = true;
+            this.lbPersonID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPersonID.Location = new System.Drawing.Point(118, 126);
+            this.lbPersonID.Name = "lbPersonID";
+            this.lbPersonID.Size = new System.Drawing.Size(78, 20);
+            this.lbPersonID.TabIndex = 2;
+            this.lbPersonID.Text = "Person ID";
+            // 
             // lbFirstName
             // 
             this.lbFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -858,135 +992,6 @@ namespace ShippingManagementApp
             this.txtFirstName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtFirstName_MouseClick);
             this.txtFirstName.Leave += new System.EventHandler(this.txtFirstName_Leave);
             // 
-            // panelEducation
-            // 
-            this.panelEducation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelEducation.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelEducation.Controls.Add(this.cbEducation);
-            this.panelEducation.Location = new System.Drawing.Point(640, 169);
-            this.panelEducation.Margin = new System.Windows.Forms.Padding(0);
-            this.panelEducation.Name = "panelEducation";
-            this.panelEducation.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.panelEducation.Size = new System.Drawing.Size(155, 30);
-            this.panelEducation.TabIndex = 1;
-            // 
-            // cbEducation
-            // 
-            this.cbEducation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbEducation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbEducation.FormattingEnabled = true;
-            this.cbEducation.Items.AddRange(new object[] {
-            "__Select__",
-            "High School",
-            "Diplam\t",
-            "Bachelor",
-            "PhP"});
-            this.cbEducation.Location = new System.Drawing.Point(0, 0);
-            this.cbEducation.Name = "cbEducation";
-            this.cbEducation.Size = new System.Drawing.Size(155, 29);
-            this.cbEducation.TabIndex = 0;
-            this.cbEducation.Leave += new System.EventHandler(this.cbEducation_Leave);
-            this.cbEducation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbEducation_MouseDown);
-            // 
-            // lbEducation
-            // 
-            this.lbEducation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbEducation.AutoSize = true;
-            this.lbEducation.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEducation.Location = new System.Drawing.Point(535, 174);
-            this.lbEducation.Name = "lbEducation";
-            this.lbEducation.Size = new System.Drawing.Size(83, 20);
-            this.lbEducation.TabIndex = 6;
-            this.lbEducation.Text = "Education";
-            // 
-            // txtPersonID
-            // 
-            this.txtPersonID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPersonID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPersonID.Location = new System.Drawing.Point(205, 131);
-            this.txtPersonID.Multiline = true;
-            this.txtPersonID.Name = "txtPersonID";
-            this.txtPersonID.ReadOnly = true;
-            this.txtPersonID.Size = new System.Drawing.Size(260, 27);
-            this.txtPersonID.TabIndex = 14;
-            // 
-            // lbPersonID
-            // 
-            this.lbPersonID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbPersonID.AutoSize = true;
-            this.lbPersonID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPersonID.Location = new System.Drawing.Point(118, 134);
-            this.lbPersonID.Name = "lbPersonID";
-            this.lbPersonID.Size = new System.Drawing.Size(78, 20);
-            this.lbPersonID.TabIndex = 2;
-            this.lbPersonID.Text = "Person ID";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "PersonID";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 60;
-            // 
-            // FullName
-            // 
-            this.FullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullName.DataPropertyName = "FullName";
-            this.FullName.HeaderText = "Full Name";
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserName.DataPropertyName = "UserName";
-            this.UserName.HeaderText = "User Name";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // BirthDate
-            // 
-            this.BirthDate.DataPropertyName = "BirthDate";
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BirthDate.DefaultCellStyle = dataGridViewCellStyle6;
-            this.BirthDate.HeaderText = "Birth Date";
-            this.BirthDate.Name = "BirthDate";
-            this.BirthDate.ReadOnly = true;
-            this.BirthDate.Width = 110;
-            // 
-            // Gender
-            // 
-            this.Gender.DataPropertyName = "Gender";
-            this.Gender.HeaderText = "Gender";
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            this.Gender.Width = 90;
-            // 
-            // Mobile
-            // 
-            this.Mobile.DataPropertyName = "Mobile";
-            this.Mobile.HeaderText = "Mobile";
-            this.Mobile.Name = "Mobile";
-            this.Mobile.ReadOnly = true;
-            this.Mobile.Width = 120;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 150;
-            // 
-            // Address
-            // 
-            this.Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
             // frm_UsersSetting
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1006,6 +1011,7 @@ namespace ShippingManagementApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelAdd.ResumeLayout(false);
             this.panelAdd.PerformLayout();
+            this.panelBirthDate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1013,6 +1019,7 @@ namespace ShippingManagementApp
             this.panelRe_Password.PerformLayout();
             this.panelPassword.ResumeLayout(false);
             this.panelPassword.PerformLayout();
+            this.panelEducation.ResumeLayout(false);
             this.panelPosition.ResumeLayout(false);
             this.panelEmail.ResumeLayout(false);
             this.panelEmail.PerformLayout();
@@ -1026,7 +1033,6 @@ namespace ShippingManagementApp
             this.panelLastName.PerformLayout();
             this.panelFirstName.ResumeLayout(false);
             this.panelFirstName.PerformLayout();
-            this.panelEducation.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1040,7 +1046,7 @@ namespace ShippingManagementApp
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Panel panelFirstName;
@@ -1077,7 +1083,6 @@ namespace ShippingManagementApp
         private System.Windows.Forms.Button btnRe_Password;
         private System.Windows.Forms.DateTimePicker dateBirthDate;
         private System.Windows.Forms.Label lbBirthDate;
-        private System.Windows.Forms.Label panelBirthDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Label panelGender;
@@ -1098,5 +1103,6 @@ namespace ShippingManagementApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.Panel panelBirthDate;
     }
 }

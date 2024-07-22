@@ -1,4 +1,5 @@
-﻿using Artan.DLL.Context;
+﻿using Artan.BLL;
+using Artan.DLL.Context;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,36 +20,51 @@ namespace ShippingManagementApp
         }
         async void ReView()
         {
-            using(UnitOfWork db = new UnitOfWork())
+            using (UnitOfWork db = new UnitOfWork())
             {
                 dgvUsers.AutoGenerateColumns = false;
                 dgvUsers.DataSource = await db.RepositoryPersons.GetAllAsync();
             }
         }
+
+        void OpenClos()
+        {
+
+            if (dgvUsers.Height == 0)
+            {
+                dgvUsers.Height = 635;
+            }
+            else
+            {
+                dgvUsers.Height = 0;
+                tlpPanelTop.Enabled = false;
+            }
+            if (lbTitle.Text == "Add User")
+                btnPassword.Visible = btnRe_Password.Visible = panelPassword.Visible = panelRe_Password.Visible = lbPassword.Visible = lbRe_Password.Visible = true;
+            else
+                btnPassword.Visible = btnRe_Password.Visible = panelPassword.Visible = panelRe_Password.Visible = lbPassword.Visible = lbRe_Password.Visible = false;
+
+        }
         void TextClear()
         {
-            foreach(var pnl in panelAdd.Controls.OfType<Panel>())
+            foreach (var pnl in panelAdd.Controls.OfType<Panel>())
             {
                 pnl.BackColor = Color.Gainsboro;
-                foreach(var txt in pnl.Controls.OfType<TextBox>())
+                foreach (var txt in pnl.Controls.OfType<TextBox>())
                 {
                     txt.Text = string.Empty;
                 }
             }
+            txtUsername.Text = string.Empty;
             rbFemale.Checked = rbMale.Checked = false;
             dateBirthDate.Value = DateTime.Now;
             cbPosition.SelectedIndex = 0;
+            cbEducation.SelectedIndex = 0;
         }
 
         private void frm_UsersSetting_Load(object sender, EventArgs e)
         {
-            dgvUsers.Height = 635;
-            //dgvUsers.Rows.Add(new object[] { "100", "James", "Adam", "09/20/1980", "Male", "11111111", "a@gmail.com", "------------" });
-            //dgvUsers.Rows.Add(new object[] { "101", "Mary", "Baker", "02/20/1974", "Female", "22222222", "b@gmail.com", "------------" });
-            //dgvUsers.Rows.Add(new object[] { "102", "John", "Snyder", "04/21/1983", "Male", "333333333", "c@gmail.com", "------------" });
-            //dgvUsers.Rows.Add(new object[] { "103", "Patricia", "Young", "12/30/1990", "Male", "444444444", "d@gmail.com", "------------" });
-            //dgvUsers.Rows.Add(new object[] { "104", "Robert", "Miller", "10/11/1982", "Male", "55555555", "e@gmail.com", "------------" });
-            //dgvUsers.Rows.Add(new object[] { "105", "Jennifer", "Campbell", "05/03/1986", "Female", "666666666", "g@gmail.com", "------------" });
+            dgvUsers.Height = this.Height;
             ReView();
         }
 
@@ -190,17 +206,17 @@ namespace ShippingManagementApp
                 pnl.BackColor = Color.Gainsboro;
                 foreach (var txt in pnl.Controls.OfType<TextBox>())
                 {
-                    if(txt.Text == string.Empty)
+                    if (txt.Text == string.Empty)
                     {
-                        pnl.BackColor = Color.FromArgb(183,9,76);
+                        pnl.BackColor = Color.FromArgb(183, 9, 76);
                     }
                 }
             }
-            if(rbFemale.Checked == false && rbMale.Checked == false)
+            if (rbFemale.Checked == false && rbMale.Checked == false)
             {
                 panelGender.BackColor = Color.FromArgb(183, 9, 76);
             }
-            if (cbPosition.SelectedIndex ==0)
+            if (cbPosition.SelectedIndex == 0)
             {
                 panelPosition.BackColor = Color.FromArgb(183, 9, 76);
             }
@@ -211,59 +227,69 @@ namespace ShippingManagementApp
             if (txtPassword.Text != txtRe_Password.Text)
             {
                 panelPassword.BackColor = panelRe_Password.BackColor = Color.FromArgb(183, 9, 76);
-            }else if (txtFirstName.Text != string.Empty & txtLastName.Text != string.Empty &cbEducation.SelectedIndex !=0 & cbPosition.SelectedIndex != 0)
+            }
+            else if (txtFirstName.Text != string.Empty & txtLastName.Text != string.Empty & cbEducation.SelectedIndex != 0 & cbPosition.SelectedIndex != 0)
             {
-                if(lbTitle.Text == "Add User")
+                var pass = CryptoServices.HashPass_SHA256(txtPassword.Text.Trim());
+                if (lbTitle.Text == "Add User")
                 {
-                    using(UnitOfWork db = new UnitOfWork())
+                    using (UnitOfWork db = new UnitOfWork())
                     {
-                        await db.RepositoryPersons.InsertAsync(txtFirstName.Text,txtLastName.Text,(rbMale.Checked)?true:false,;
+                        await db.RepositoryPersons.InsertAsync(txtFirstName.Text, txtLastName.Text, (rbMale.Checked) ? true : false, dateBirthDate.Text
+                            , cbEducation.SelectedIndex, txtEmail.Text, txtMobile.Text, true, txtAddress.Text, cbPosition.SelectedIndex,
+                            txtUsername.Text, pass, DateTime.Now.ToString());
                     }
                 }
                 else
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
-                        await db.RepositoryPersons.UpdateAsync();
+                        await db.RepositoryPersons.UpdateAsync(Convert.ToInt32(txtPersonID.Text), txtFirstName.Text, txtLastName.Text, (rbMale.Checked) ? true : false,
+                            dateBirthDate.Text, cbEducation.SelectedIndex, txtEmail.Text, txtMobile.Text, true, txtAddress.Text, cbPosition.SelectedIndex,
+                            txtUsername.Text, txtPassword.Text, DateTime.Now.ToString());
                     }
                 }
+                OpenClos();
                 ReView();
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            btnPassword.Visible = btnRe_Password.Visible =
-            panelPassword.Visible = panelRe_Password.Visible =
-            lbPassword.Visible = lbRe_Password.Visible = true;
-            dgvUsers.Height = 635;
-            tlpPanelTop.Enabled = true;
+            OpenClos();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             TextClear();
             lbTitle.Text = "Add User";
-            dgvUsers.Height = 0;
-            tlpPanelTop.Enabled = false;
+            OpenClos();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             TextClear();
-            btnPassword.Visible = btnRe_Password.Visible =
-            panelPassword.Visible = panelRe_Password.Visible =
-            lbPassword.Visible = lbRe_Password.Visible = false;
             lbTitle.Text = "Edit User";
-            dgvUsers.Height = 0;
-            tlpPanelTop.Enabled = false;
-            if(dgvUsers.CurrentRow != null)
+            OpenClos();
+            if (dgvUsers.CurrentRow != null)
             {
-                txtFirstName.Text = dgvUsers.Rows[0].Cells[1].Value.ToString();
-                txtLastName.Text = dgvUsers.Rows[0].Cells[2].Value.ToString();
-                txtEmail.Text = dgvUsers.Rows[0].Cells[6].Value.ToString();
-                txtAddress.Text = dgvUsers.Rows[0].Cells[7].Value.ToString();
-                txtMobile.Text = dgvUsers.Rows[0].Cells[5].Value.ToString();
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    var person = (await db.RepositoryPersons.GetAllAsync()).SingleOrDefault(x => x.PersonID == (int)dgvUsers.CurrentRow.Cells[0].Value);
+                    txtPersonID.Text = person.PersonID.ToString();
+                    dateBirthDate.Text = person.BirthDate;
+                    txtFirstName.Text = person.FirstName;
+                    txtLastName.Text = person.LastName;
+                    cbEducation.SelectedIndex = person.EducationID;
+                    txtEmail.Text = person.Email;
+                    txtAddress.Text = person.Address;
+                    txtMobile.Text = person.Mobile;
+                    rbMale.Checked = (person.Gender == "Male") ? true : false;
+                    rbFemale.Checked = (person.Gender == "Male") ? true : false;
+                    txtUsername.Text = person.UserName;
+                    cbPosition.SelectedIndex = person.PositionID;
+
+                }
 
             }
 
@@ -297,5 +323,41 @@ namespace ShippingManagementApp
             }
         }
 
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                dgvUsers.AutoGenerateColumns = false;
+                dgvUsers.DataSource = await db.RepositoryPersons.GetSearchAsync(txtSearch.Text);
+            }
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            if (dgvUsers.CurrentRow != null)
+            {
+                if (MessageBox.Show("Are you sure you want to delete" + dgvUsers.CurrentRow.Cells[1].Value + "?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        var id = (int)dgvUsers.CurrentRow.Cells[0].Value;
+
+                        await db.RepositoryPersons.DeleteAsync(id);
+                    }
+                    ReView();
+                }
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ReView();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

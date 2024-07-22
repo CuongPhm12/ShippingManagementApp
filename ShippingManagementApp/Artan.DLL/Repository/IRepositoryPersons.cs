@@ -10,6 +10,7 @@ namespace Artan.DLL.Repository
     public interface IRepositoryPersons
     {
         Task<bool> DuplicateValueAsync(string fullName, string userName);
+        Task<bool> LoginAsync(string userName, string password, int position);
         Task<List<vw_Persons>> GetAllAsync();
         Task<List<sp_PersonSearch_Result>> GetSearchAsync(string searchName);
         Task<bool> InsertAsync(string firstName, string lastName, bool gender, string birthDate, int educationID,

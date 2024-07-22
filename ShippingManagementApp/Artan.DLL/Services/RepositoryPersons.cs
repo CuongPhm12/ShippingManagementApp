@@ -35,6 +35,17 @@ namespace Artan.DLL.Services
             catch { return false; }
 
         }
+        public async Task<bool> LoginAsync(string userName, string password, int positionID)
+        {
+            try
+            {
+                if (await Task.Run(() => db_Artan.vw_Persons.Any(x => x.UserName == userName && x.Password == password && x.PositionID == positionID)))
+                    return true;
+                else
+                    return false;
+            }
+            catch { return false; }
+        }
 
         public async Task<List<vw_Persons>> GetAllAsync()
         {
@@ -66,11 +77,12 @@ namespace Artan.DLL.Services
             catch { return false; }
         }
 
+
         public async Task<bool> UpdateAsync(int personId, string firstName, string lastName, bool gender, string birthDate, int educationID, string email, string mobile, bool condition, string address, int positionID, string userName, string password, string createDate)
         {
             try
             {
-                await Task.Run(() => db_Artan.sp_PersonUpdate(personId,  firstName, lastName,  gender, birthDate,  educationID,  email, mobile, condition,  address, positionID, userName, password,  createDate));
+                await Task.Run(() => db_Artan.sp_PersonUpdate(personId, firstName, lastName, gender, birthDate, educationID, email, mobile, condition, address, positionID, userName, password, createDate));
                 return true;
             }
             catch { return false; }

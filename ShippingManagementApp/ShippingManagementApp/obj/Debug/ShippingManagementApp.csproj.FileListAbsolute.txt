@@ -54,3 +54,5 @@ D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\Shipp
 D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\ShippingManagementApp\bin\Debug\EntityFramework.xml
 D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\ShippingManagementApp\bin\Debug\EntityFramework.SqlServer.dll
 D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\ShippingManagementApp\bin\Debug\EntityFramework.SqlServer.xml
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\ShippingManagementApp\obj\Debug\ShippingManagementApp.frm_Login.resources
+D:\Cuong 052024\Projects\Study\ShippingManagementApp\ShippingManagementApp\ShippingManagementApp\obj\Debug\ShippingManagementApp.frmCompanies.resources

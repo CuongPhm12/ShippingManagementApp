@@ -83,9 +83,49 @@ namespace ShippingManagementApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel {
+            get {
+                object obj = ResourceManager.GetObject("Cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close {
+            get {
+                object obj = ResourceManager.GetObject("Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_16 {
             get {
                 object obj = ResourceManager.GetObject("Close_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_red {
+            get {
+                object obj = ResourceManager.GetObject("Close_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Company_blue {
+            get {
+                object obj = ResourceManager.GetObject("Company_blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +166,16 @@ namespace ShippingManagementApp.Properties {
         internal static System.Drawing.Bitmap Estimate {
             get {
                 object obj = ResourceManager.GetObject("Estimate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Headquarters_white {
+            get {
+                object obj = ResourceManager.GetObject("Headquarters_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +226,16 @@ namespace ShippingManagementApp.Properties {
         internal static System.Drawing.Bitmap Note1 {
             get {
                 object obj = ResourceManager.GetObject("Note1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Opened_Folder_white {
+            get {
+                object obj = ResourceManager.GetObject("Opened Folder_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +296,16 @@ namespace ShippingManagementApp.Properties {
         internal static System.Drawing.Bitmap UMC_logo_Photoroom_png_Photoroom {
             get {
                 object obj = ResourceManager.GetObject("UMC logo-Photoroom.png-Photoroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UMC_logo_Photoroom1 {
+            get {
+                object obj = ResourceManager.GetObject("UMC logo-Photoroom1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
