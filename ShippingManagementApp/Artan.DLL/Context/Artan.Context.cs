@@ -31,6 +31,8 @@ namespace Artan.DLL.Context
         public virtual DbSet<tbl_Persons> tbl_Persons { get; set; }
         public virtual DbSet<tbl_Position> tbl_Position { get; set; }
         public virtual DbSet<vw_Persons> vw_Persons { get; set; }
+        public virtual DbSet<tbl_Companies> tbl_Companies { get; set; }
+        public virtual DbSet<vw_Companies> vw_Companies { get; set; }
     
         public virtual int sp_PersonDelete(Nullable<int> personID)
         {
@@ -166,6 +168,130 @@ namespace Artan.DLL.Context
                 new ObjectParameter("CreateDate", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_PersonUpdate", personIDParameter, firstNameParameter, lastNameParameter, genderParameter, birthDateParameter, educationIDParameter, emailParameter, mobileParameter, conditionParameter, addressParameter, positionIDParameter, userNameParameter, passwordParameter, createDateParameter);
+        }
+    
+        public virtual int sp_CompanyDelete(Nullable<int> companyID)
+        {
+            var companyIDParameter = companyID.HasValue ?
+                new ObjectParameter("CompanyID", companyID) :
+                new ObjectParameter("CompanyID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CompanyDelete", companyIDParameter);
+        }
+    
+        public virtual int sp_CompanyInsert(string companyName, string representative, Nullable<bool> companyType, string collaborationDate, string email, string phone, string mobile, string fax, Nullable<bool> status, string address, byte[] pic, string createDate)
+        {
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var representativeParameter = representative != null ?
+                new ObjectParameter("Representative", representative) :
+                new ObjectParameter("Representative", typeof(string));
+    
+            var companyTypeParameter = companyType.HasValue ?
+                new ObjectParameter("CompanyType", companyType) :
+                new ObjectParameter("CompanyType", typeof(bool));
+    
+            var collaborationDateParameter = collaborationDate != null ?
+                new ObjectParameter("CollaborationDate", collaborationDate) :
+                new ObjectParameter("CollaborationDate", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("Phone", phone) :
+                new ObjectParameter("Phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("Mobile", mobile) :
+                new ObjectParameter("Mobile", typeof(string));
+    
+            var faxParameter = fax != null ?
+                new ObjectParameter("Fax", fax) :
+                new ObjectParameter("Fax", typeof(string));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var picParameter = pic != null ?
+                new ObjectParameter("Pic", pic) :
+                new ObjectParameter("Pic", typeof(byte[]));
+    
+            var createDateParameter = createDate != null ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CompanyInsert", companyNameParameter, representativeParameter, companyTypeParameter, collaborationDateParameter, emailParameter, phoneParameter, mobileParameter, faxParameter, statusParameter, addressParameter, picParameter, createDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_CompanySearch_Result> sp_CompanySearch(string searchName)
+        {
+            var searchNameParameter = searchName != null ?
+                new ObjectParameter("SearchName", searchName) :
+                new ObjectParameter("SearchName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CompanySearch_Result>("sp_CompanySearch", searchNameParameter);
+        }
+    
+        public virtual int sp_CompanyUpdate(Nullable<int> companyID, string companyName, string representative, Nullable<bool> companyType, string collaborationDate, string email, string mobile, string fax, Nullable<bool> status, string address, byte[] pic, string createDate)
+        {
+            var companyIDParameter = companyID.HasValue ?
+                new ObjectParameter("CompanyID", companyID) :
+                new ObjectParameter("CompanyID", typeof(int));
+    
+            var companyNameParameter = companyName != null ?
+                new ObjectParameter("CompanyName", companyName) :
+                new ObjectParameter("CompanyName", typeof(string));
+    
+            var representativeParameter = representative != null ?
+                new ObjectParameter("Representative", representative) :
+                new ObjectParameter("Representative", typeof(string));
+    
+            var companyTypeParameter = companyType.HasValue ?
+                new ObjectParameter("CompanyType", companyType) :
+                new ObjectParameter("CompanyType", typeof(bool));
+    
+            var collaborationDateParameter = collaborationDate != null ?
+                new ObjectParameter("CollaborationDate", collaborationDate) :
+                new ObjectParameter("CollaborationDate", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("Mobile", mobile) :
+                new ObjectParameter("Mobile", typeof(string));
+    
+            var faxParameter = fax != null ?
+                new ObjectParameter("Fax", fax) :
+                new ObjectParameter("Fax", typeof(string));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var picParameter = pic != null ?
+                new ObjectParameter("Pic", pic) :
+                new ObjectParameter("Pic", typeof(byte[]));
+    
+            var createDateParameter = createDate != null ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CompanyUpdate", companyIDParameter, companyNameParameter, representativeParameter, companyTypeParameter, collaborationDateParameter, emailParameter, mobileParameter, faxParameter, statusParameter, addressParameter, picParameter, createDateParameter);
         }
     }
 }

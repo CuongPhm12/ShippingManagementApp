@@ -123,6 +123,16 @@ namespace ShippingManagementApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Close_red1 {
+            get {
+                object obj = ResourceManager.GetObject("Close_red1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Company_blue {
             get {
                 object obj = ResourceManager.GetObject("Company_blue", resourceCulture);
@@ -236,6 +246,16 @@ namespace ShippingManagementApp.Properties {
         internal static System.Drawing.Bitmap Opened_Folder_white {
             get {
                 object obj = ResourceManager.GetObject("Opened Folder_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prev {
+            get {
+                object obj = ResourceManager.GetObject("Prev", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

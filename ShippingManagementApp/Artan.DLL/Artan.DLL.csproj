@@ -65,7 +65,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Artan.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\sp_CompanySearch_Result.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\sp_PersonSearch_Result.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\tbl_Companies.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\tbl_Education.cs">
@@ -78,11 +84,16 @@
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
+    <Compile Include="Context\vw_Companies.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\vw_Persons.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryCompanies.cs" />
     <Compile Include="Repository\IRepositoryPersons.cs" />
+    <Compile Include="Services\RepositoryCompanies.cs" />
     <Compile Include="Services\RepositoryPersons.cs" />
   </ItemGroup>
   <ItemGroup>

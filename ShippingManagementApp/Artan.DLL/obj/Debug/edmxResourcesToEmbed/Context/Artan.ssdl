@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Artan_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Companies">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyType" Type="bit" />
+    <Property Name="CollaborationDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="EducationID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="11" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_Education">
     <Key>
       <PropertyRef Name="EducationID" />
@@ -34,6 +53,26 @@
     <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Companies">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyType" Type="varchar" MaxLength="8" />
+    <Property Name="CollaborationDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="11" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="Status" Type="varchar" MaxLength="8" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_Persons">
     <Key>
@@ -59,6 +98,40 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <Property Name="Password" Type="nvarchar" MaxLength="200" />
     <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Function Name="sp_CompanyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_CompanyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Representative" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyType" Type="bit" Mode="In" />
+    <Parameter Name="CollaborationDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Fax" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Pic" Type="image" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CompanySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CompanyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Representative" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyType" Type="bit" Mode="In" />
+    <Parameter Name="CollaborationDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="Fax" Type="nvarchar" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Pic" Type="image" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PersonID" Type="int" Mode="In" />
   </Function>
@@ -97,9 +170,27 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="Artan_DBModelStoreContainer">
+    <EntitySet Name="tbl_Companies" EntityType="Self.tbl_Companies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Companies" EntityType="Self.vw_Companies" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Companies].[CompanyID] AS [CompanyID], 
+    [vw_Companies].[CompanyName] AS [CompanyName], 
+    [vw_Companies].[Representative] AS [Representative], 
+    [vw_Companies].[CompanyType] AS [CompanyType], 
+    [vw_Companies].[CollaborationDate] AS [CollaborationDate], 
+    [vw_Companies].[Email] AS [Email], 
+    [vw_Companies].[Phone] AS [Phone], 
+    [vw_Companies].[Fax] AS [Fax], 
+    [vw_Companies].[Mobile] AS [Mobile], 
+    [vw_Companies].[Status] AS [Status], 
+    [vw_Companies].[Address] AS [Address], 
+    [vw_Companies].[Pic] AS [Pic], 
+    [vw_Companies].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Companies] AS [vw_Companies]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_Persons].[PersonID] AS [PersonID], 

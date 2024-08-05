@@ -5,10 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5312552c60cc45f9897f75b400fd0c3b" Name="Diagram1">
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Education" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Persons" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Position" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Artan_DBModel.vw_Persons" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Education" Width="1.5" PointX="2.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Persons" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Position" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.vw_Persons" Width="1.5" PointX="11.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Companies" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Artan_DBModel.vw_Companies" Width="1.5" PointX="9.375" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -86,6 +86,12 @@
     <Compile Include="frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Orders.Designer.cs">
+      <DependentUpon>frm_Orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_UsersSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Orders.resx">
+      <DependentUpon>frm_Orders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_UsersSetting.resx">
       <DependentUpon>frm_UsersSetting.cs</DependentUpon>
@@ -217,6 +226,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Opened Folder_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_red1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

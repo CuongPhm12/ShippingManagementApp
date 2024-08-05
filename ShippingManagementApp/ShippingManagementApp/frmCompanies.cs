@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace ShippingManagementApp
             using (UnitOfWork db = new UnitOfWork())
             {
                 dgvCompany.AutoGenerateColumns = false;
-                //dgvCompany.DataSource = await db.RepositoryPersons.GetAllAsync();
+                dgvCompany.DataSource = await db.RepositoryCompanies.GetAllAsync();
             }
         }
 
@@ -70,7 +72,7 @@ namespace ShippingManagementApp
             OpenClos();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             TextClear();
             lbTitle.Text = "Edit User";
@@ -79,20 +81,20 @@ namespace ShippingManagementApp
             {
                 using (UnitOfWork db = new UnitOfWork())
                 {
-                    //var person = (await db..GetAllAsync()).SingleOrDefault(x => x.PersonID == (int)dgvCompany.CurrentRow.Cells[0].Value);
-                    //txtCompanyID.Text = person.PersonID.ToString();
-                    //dateCollaborationDate.Text = person.BirthDate;
-                    //txtCompanyName.Text = person.FirstName;
-                    //txtRepresentative.Text = person.LastName;
-                    //cbCompanyType.SelectedIndex = person.EducationID;
-                    //txtEmail.Text = person.Email;
-                    //txtAddress.Text = person.Address;
-                    //txtMobile.Text = person.Mobile;
-                    //txtPhone.Text = person.Mobile;
-                    //txtFax.Text = person.Mobile;
-                    //rbActive.Checked = (person.Gender == "Male") ? true : false;
-                    //rbInActive.Checked = (person.Gender == "Male") ? true : false;
-
+                    var company = (await db.RepositoryCompanies.GetAllAsync()).SingleOrDefault(x => x.CompanyID == (int)dgvCompany.CurrentRow.Cells[0].Value);
+                    txtCompanyID.Text = company.CompanyID.ToString();
+                    dateCollaborationDate.Text = company.CollaborationDate;
+                    txtCompanyName.Text = company.CompanyName;
+                    txtRepresentative.Text = company.Representative;
+                    cbCompanyType.SelectedIndex = (company.CompanyType=="true")?0:1;
+                    txtEmail.Text = company.Email;
+                    txtAddress.Text = company.Address;
+                    txtMobile.Text = company.Mobile;
+                    txtPhone.Text = company.Phone;
+                    txtFax.Text = company.Fax;
+                    rbActive.Checked = (company.Status == "Male") ? true : false;
+                    rbInActive.Checked = (company.Status == "Male") ? true : false;
+                    picCompany.Image = ConvertBinaryToImage(company.Pic);
 
                 }
 
@@ -100,18 +102,18 @@ namespace ShippingManagementApp
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
 
             if (dgvCompany.CurrentRow != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete" + dgvCompany.CurrentRow.Cells[1].Value + "?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete" + dgvCompany.CurrentRow.Cells[1].Value + "company?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
                         var id = (int)dgvCompany.CurrentRow.Cells[0].Value;
 
-                        //await db.RepositoryPersons.DeleteAsync(id);
+                        await db.RepositoryCompanies.DeleteAsync(id);
                     }
                     ReView();
                 }
@@ -155,7 +157,7 @@ namespace ShippingManagementApp
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             foreach (var pnl in panelAdd.Controls.OfType<Panel>())
             {
@@ -190,18 +192,38 @@ namespace ShippingManagementApp
 
                     using (UnitOfWork db = new UnitOfWork())
                     {
-
+                        await db.RepositoryCompanies.InsertAsync(txtCompanyName.Text, txtRepresentative.Text, (cbCompanyType.SelectedIndex == 0) ? true : false, dateCollaborationDate.Text,
+                            txtEmail.Text, txtPhone.Text, txtMobile.Text, txtFax.Text, (rbActive.Checked) ? true : false, txtAddress.Text, ConvertImageToBinary(picCompany.Image), DateTime.Now.ToString());
                     }
                 }
                 else
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
-
+                        await db.RepositoryCompanies.UpdateAsync(int.Parse(txtCompanyID.Text), txtCompanyName.Text, txtRepresentative.Text, (cbCompanyType.SelectedIndex == 0) ? true : false, dateCollaborationDate.Text,
+                            txtEmail.Text, txtMobile.Text, txtFax.Text, (rbActive.Checked) ? true : false, txtAddress.Text, ConvertImageToBinary(picCompany.Image), DateTime.Now.ToString());
                     }
                 }
                 OpenClos();
                 ReView();
+            }
+        }
+
+        byte[] ConvertImageToBinary(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var i = new Bitmap(image);
+                i.Save(ms, ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
+        Image ConvertBinaryToImage(byte[] image)
+        {
+            using (MemoryStream ms = new MemoryStream(image))
+            {
+
+                return Image.FromStream(ms);
             }
         }
 

@@ -4,7 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Artan_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Artan_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Companies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyType" Type="bit" />
+          <Property Name="CollaborationDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="EducationID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="11" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_Education">
           <Key>
             <PropertyRef Name="EducationID" />
@@ -39,6 +58,26 @@
           <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Companies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyType" Type="varchar" MaxLength="8" />
+          <Property Name="CollaborationDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="11" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" />
+          <Property Name="Status" Type="varchar" MaxLength="8" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_Persons">
           <Key>
@@ -64,6 +103,40 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Property Name="Password" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Function Name="sp_CompanyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CompanyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Representative" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyType" Type="bit" Mode="In" />
+          <Parameter Name="CollaborationDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pic" Type="image" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CompanySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CompanyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="int" Mode="In" />
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Representative" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyType" Type="bit" Mode="In" />
+          <Parameter Name="CollaborationDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pic" Type="image" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PersonID" Type="int" Mode="In" />
         </Function>
@@ -102,9 +175,27 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="Artan_DBModelStoreContainer">
+          <EntitySet Name="tbl_Companies" EntityType="Self.tbl_Companies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Companies" EntityType="Self.vw_Companies" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Companies].[CompanyID] AS [CompanyID], 
+    [vw_Companies].[CompanyName] AS [CompanyName], 
+    [vw_Companies].[Representative] AS [Representative], 
+    [vw_Companies].[CompanyType] AS [CompanyType], 
+    [vw_Companies].[CollaborationDate] AS [CollaborationDate], 
+    [vw_Companies].[Email] AS [Email], 
+    [vw_Companies].[Phone] AS [Phone], 
+    [vw_Companies].[Fax] AS [Fax], 
+    [vw_Companies].[Mobile] AS [Mobile], 
+    [vw_Companies].[Status] AS [Status], 
+    [vw_Companies].[Address] AS [Address], 
+    [vw_Companies].[Pic] AS [Pic], 
+    [vw_Companies].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Companies] AS [vw_Companies]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_Persons].[PersonID] AS [PersonID], 
@@ -127,8 +218,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     FROM [dbo].[vw_Persons] AS [vw_Persons]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Artan_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,7 +285,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" />
           <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" />
           <FunctionImport Name="sp_PersonDelete">
-            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          <Parameter Name="PersonID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_PersonInsert">
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -213,7 +303,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             <Parameter Name="CreateDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_PersonSearch" ReturnType="Collection(Artan_DBModel.sp_PersonSearch_Result)">
-            <Parameter Name="SearchName" Mode="In" Type="String" />
+          <Parameter Name="SearchName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_PersonUpdate">
             <Parameter Name="PersonID" Mode="In" Type="Int32" />
@@ -229,6 +319,42 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             <Parameter Name="PositionID" Mode="In" Type="Int32" />
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Companies" EntityType="Artan_DBModel.tbl_Companies" />
+          <EntitySet Name="vw_Companies" EntityType="Artan_DBModel.vw_Companies" />
+          <FunctionImport Name="sp_CompanyDelete">
+            <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CompanyInsert">
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="Representative" Mode="In" Type="String" />
+            <Parameter Name="CompanyType" Mode="In" Type="Boolean" />
+            <Parameter Name="CollaborationDate" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Fax" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Pic" Mode="In" Type="Binary" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CompanySearch" ReturnType="Collection(Artan_DBModel.sp_CompanySearch_Result)">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CompanyUpdate">
+            <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="Representative" Mode="In" Type="String" />
+            <Parameter Name="CompanyType" Mode="In" Type="Boolean" />
+            <Parameter Name="CollaborationDate" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Fax" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Pic" Mode="In" Type="Binary" />
             <Parameter Name="CreateDate" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
@@ -249,6 +375,58 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Property Type="String" Name="PositionTitle" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="tbl_Companies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Representative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyType" Type="Boolean" />
+          <Property Name="CollaborationDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EducationID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_Companies">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Representative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyType" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CollaborationDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_CompanySearch_Result">
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Representative" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CompanyType" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="CollaborationDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="Binary" Name="Pic" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
@@ -342,6 +520,67 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_PersonUpdate" FunctionName="Artan_DBModel.Store.sp_PersonUpdate" />
+          <EntitySetMapping Name="tbl_Companies">
+            <EntityTypeMapping TypeName="Artan_DBModel.tbl_Companies">
+              <MappingFragment StoreEntitySet="tbl_Companies">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="CollaborationDate" ColumnName="CollaborationDate" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Companies">
+            <EntityTypeMapping TypeName="Artan_DBModel.vw_Companies">
+              <MappingFragment StoreEntitySet="vw_Companies">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CollaborationDate" ColumnName="CollaborationDate" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_CompanyDelete" FunctionName="Artan_DBModel.Store.sp_CompanyDelete" />
+          <FunctionImportMapping FunctionImportName="sp_CompanyInsert" FunctionName="Artan_DBModel.Store.sp_CompanyInsert" />
+          <FunctionImportMapping FunctionImportName="sp_CompanySearch" FunctionName="Artan_DBModel.Store.sp_CompanySearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Artan_DBModel.sp_CompanySearch_Result">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="CollaborationDate" ColumnName="CollaborationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CompanyUpdate" FunctionName="Artan_DBModel.Store.sp_CompanyUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

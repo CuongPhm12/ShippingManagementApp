@@ -24,7 +24,19 @@ namespace Artan.DLL.Context
                 return repositoryPersons;
             }
         }
+        private IRepositoryCompanies repositoryCompanies;
 
+        public IRepositoryCompanies RepositoryCompanies
+        {
+            get
+            {
+                if (repositoryCompanies == null)
+                {
+                    repositoryCompanies = new RepositoryCompanies(dbArtan);
+                }
+                return repositoryCompanies;
+            }
+        }
 
         public void Dispose()
         {

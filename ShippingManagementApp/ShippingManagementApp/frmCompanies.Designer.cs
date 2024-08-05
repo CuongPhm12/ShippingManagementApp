@@ -35,7 +35,13 @@ namespace ShippingManagementApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tlpPanelTop = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelCompanyName = new System.Windows.Forms.Panel();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
             this.lbCompanyName = new System.Windows.Forms.Label();
@@ -66,24 +72,6 @@ namespace ShippingManagementApp
             this.panelStatus = new System.Windows.Forms.Label();
             this.txtCompanyID = new System.Windows.Forms.TextBox();
             this.dgvCompany = new System.Windows.Forms.DataGridView();
-            this.panelAdd = new System.Windows.Forms.Panel();
-            this.lbFax = new System.Windows.Forms.Label();
-            this.panelFax = new System.Windows.Forms.Panel();
-            this.txtFax = new System.Windows.Forms.TextBox();
-            this.panelPhone = new System.Windows.Forms.Panel();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.lbPhone = new System.Windows.Forms.Label();
-            this.picCompany = new System.Windows.Forms.PictureBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnPicDelete = new System.Windows.Forms.Button();
-            this.btnPicOpen = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CompanyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Representative = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,10 +81,23 @@ namespace ShippingManagementApp
             this.Fax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelAdd = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panelCollaborationDate = new System.Windows.Forms.Panel();
             this.dateCollaborationDate = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbFax = new System.Windows.Forms.Label();
+            this.panelFax = new System.Windows.Forms.Panel();
+            this.txtFax = new System.Windows.Forms.TextBox();
+            this.btnPicDelete = new System.Windows.Forms.Button();
+            this.btnPicOpen = new System.Windows.Forms.Button();
+            this.lbPhone = new System.Windows.Forms.Label();
+            this.panelPhone = new System.Windows.Forms.Panel();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.picCompany = new System.Windows.Forms.PictureBox();
             this.tlpPanelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelCompanyName.SuspendLayout();
             this.panelRepresentative.SuspendLayout();
             this.panelMobile.SuspendLayout();
@@ -106,11 +107,10 @@ namespace ShippingManagementApp
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).BeginInit();
             this.panelAdd.SuspendLayout();
+            this.panelCollaborationDate.SuspendLayout();
             this.panelFax.SuspendLayout();
             this.panelPhone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCompany)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelCollaborationDate.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -147,6 +147,101 @@ namespace ShippingManagementApp
             this.tlpPanelTop.Size = new System.Drawing.Size(950, 100);
             this.tlpPanelTop.TabIndex = 2;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Image = global::ShippingManagementApp.Properties.Resources.Print_white;
+            this.btnPrint.Location = new System.Drawing.Point(363, 3);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(84, 54);
+            this.btnPrint.TabIndex = 4;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Image = global::ShippingManagementApp.Properties.Resources.Reboot_white;
+            this.btnRefresh.Location = new System.Drawing.Point(273, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(84, 54);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = global::ShippingManagementApp.Properties.Resources.Delete_User_Male_white;
+            this.btnDelete.Location = new System.Drawing.Point(183, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(84, 54);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Image = global::ShippingManagementApp.Properties.Resources.Edit_User_white;
+            this.btnEdit.Location = new System.Drawing.Point(93, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(84, 54);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Image = global::ShippingManagementApp.Properties.Resources.Add_User_Male_white;
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(84, 54);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // txtSearch
             // 
             this.tlpPanelTop.SetColumnSpan(this.txtSearch, 5);
@@ -156,6 +251,17 @@ namespace ShippingManagementApp
             this.txtSearch.Size = new System.Drawing.Size(764, 27);
             this.txtSearch.TabIndex = 5;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ShippingManagementApp.Properties.Resources.Search;
+            this.pictureBox1.Location = new System.Drawing.Point(860, 67);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // panelCompanyName
             // 
@@ -539,308 +645,6 @@ namespace ShippingManagementApp
             this.dgvCompany.Size = new System.Drawing.Size(930, 48);
             this.dgvCompany.TabIndex = 0;
             // 
-            // panelAdd
-            // 
-            this.panelAdd.BackColor = System.Drawing.Color.LightGray;
-            this.panelAdd.Controls.Add(this.dgvCompany);
-            this.panelAdd.Controls.Add(this.btnCancel);
-            this.panelAdd.Controls.Add(this.btnSave);
-            this.panelAdd.Controls.Add(this.panelCollaborationDate);
-            this.panelAdd.Controls.Add(this.lbFax);
-            this.panelAdd.Controls.Add(this.panelFax);
-            this.panelAdd.Controls.Add(this.txtCompanyID);
-            this.panelAdd.Controls.Add(this.btnPicDelete);
-            this.panelAdd.Controls.Add(this.btnPicOpen);
-            this.panelAdd.Controls.Add(this.panelStatus);
-            this.panelAdd.Controls.Add(this.panelBirthDate);
-            this.panelAdd.Controls.Add(this.groupBox1);
-            this.panelAdd.Controls.Add(this.lbCompanyType);
-            this.panelAdd.Controls.Add(this.panelCompanyType);
-            this.panelAdd.Controls.Add(this.lbEmail);
-            this.panelAdd.Controls.Add(this.panelEmail);
-            this.panelAdd.Controls.Add(this.lbAddress);
-            this.panelAdd.Controls.Add(this.panelAddress);
-            this.panelAdd.Controls.Add(this.lbCollaborationDate);
-            this.panelAdd.Controls.Add(this.lbPhone);
-            this.panelAdd.Controls.Add(this.lbMobile);
-            this.panelAdd.Controls.Add(this.lbRepresentative);
-            this.panelAdd.Controls.Add(this.lbStatus);
-            this.panelAdd.Controls.Add(this.panelPhone);
-            this.panelAdd.Controls.Add(this.panelMobile);
-            this.panelAdd.Controls.Add(this.panelRepresentative);
-            this.panelAdd.Controls.Add(this.label1);
-            this.panelAdd.Controls.Add(this.lbTitle);
-            this.panelAdd.Controls.Add(this.lbCompanyID);
-            this.panelAdd.Controls.Add(this.lbCompanyName);
-            this.panelAdd.Controls.Add(this.panelCompanyName);
-            this.panelAdd.Controls.Add(this.picCompany);
-            this.panelAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAdd.Location = new System.Drawing.Point(0, 100);
-            this.panelAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.panelAdd.Name = "panelAdd";
-            this.panelAdd.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.panelAdd.Size = new System.Drawing.Size(950, 650);
-            this.panelAdd.TabIndex = 3;
-            // 
-            // lbFax
-            // 
-            this.lbFax.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbFax.AutoSize = true;
-            this.lbFax.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFax.Location = new System.Drawing.Point(625, 394);
-            this.lbFax.Name = "lbFax";
-            this.lbFax.Size = new System.Drawing.Size(33, 20);
-            this.lbFax.TabIndex = 16;
-            this.lbFax.Text = "Fax";
-            // 
-            // panelFax
-            // 
-            this.panelFax.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelFax.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelFax.Controls.Add(this.txtFax);
-            this.panelFax.Location = new System.Drawing.Point(693, 389);
-            this.panelFax.Margin = new System.Windows.Forms.Padding(0);
-            this.panelFax.Name = "panelFax";
-            this.panelFax.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.panelFax.Size = new System.Drawing.Size(155, 30);
-            this.panelFax.TabIndex = 15;
-            // 
-            // txtFax
-            // 
-            this.txtFax.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFax.Location = new System.Drawing.Point(0, 0);
-            this.txtFax.Multiline = true;
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(155, 27);
-            this.txtFax.TabIndex = 0;
-            this.txtFax.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtFax_MouseClick);
-            this.txtFax.Leave += new System.EventHandler(this.txtFax_Leave);
-            // 
-            // panelPhone
-            // 
-            this.panelPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelPhone.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelPhone.Controls.Add(this.txtPhone);
-            this.panelPhone.Location = new System.Drawing.Point(693, 295);
-            this.panelPhone.Margin = new System.Windows.Forms.Padding(0);
-            this.panelPhone.Name = "panelPhone";
-            this.panelPhone.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.panelPhone.Size = new System.Drawing.Size(155, 30);
-            this.panelPhone.TabIndex = 1;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPhone.Location = new System.Drawing.Point(0, 0);
-            this.txtPhone.Multiline = true;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(155, 27);
-            this.txtPhone.TabIndex = 0;
-            this.txtPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPhone_MouseClick);
-            this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
-            // 
-            // lbPhone
-            // 
-            this.lbPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbPhone.AutoSize = true;
-            this.lbPhone.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhone.Location = new System.Drawing.Point(602, 300);
-            this.lbPhone.Name = "lbPhone";
-            this.lbPhone.Size = new System.Drawing.Size(56, 20);
-            this.lbPhone.TabIndex = 2;
-            this.lbPhone.Text = "Phone";
-            // 
-            // picCompany
-            // 
-            this.picCompany.Image = global::ShippingManagementApp.Properties.Resources.Company_blue;
-            this.picCompany.Location = new System.Drawing.Point(689, 139);
-            this.picCompany.Name = "picCompany";
-            this.picCompany.Size = new System.Drawing.Size(117, 100);
-            this.picCompany.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picCompany.TabIndex = 17;
-            this.picCompany.TabStop = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::ShippingManagementApp.Properties.Resources.Close_16;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(522, 572);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
-            this.btnCancel.Size = new System.Drawing.Size(161, 39);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnPicDelete
-            // 
-            this.btnPicDelete.BackColor = System.Drawing.Color.White;
-            this.btnPicDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnPicDelete.FlatAppearance.BorderSize = 2;
-            this.btnPicDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPicDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPicDelete.ForeColor = System.Drawing.Color.White;
-            this.btnPicDelete.Image = global::ShippingManagementApp.Properties.Resources.Close_red;
-            this.btnPicDelete.Location = new System.Drawing.Point(770, 243);
-            this.btnPicDelete.Name = "btnPicDelete";
-            this.btnPicDelete.Size = new System.Drawing.Size(36, 39);
-            this.btnPicDelete.TabIndex = 13;
-            this.btnPicDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPicDelete.UseVisualStyleBackColor = false;
-            this.btnPicDelete.Click += new System.EventHandler(this.btnPicDelete_Click);
-            // 
-            // btnPicOpen
-            // 
-            this.btnPicOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnPicOpen.FlatAppearance.BorderSize = 0;
-            this.btnPicOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPicOpen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPicOpen.ForeColor = System.Drawing.Color.White;
-            this.btnPicOpen.Image = global::ShippingManagementApp.Properties.Resources.Opened_Folder_white;
-            this.btnPicOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPicOpen.Location = new System.Drawing.Point(689, 243);
-            this.btnPicOpen.Name = "btnPicOpen";
-            this.btnPicOpen.Size = new System.Drawing.Size(75, 39);
-            this.btnPicOpen.TabIndex = 13;
-            this.btnPicOpen.Text = "Open";
-            this.btnPicOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPicOpen.UseVisualStyleBackColor = false;
-            this.btnPicOpen.Click += new System.EventHandler(this.btnPicOpen_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = global::ShippingManagementApp.Properties.Resources.Done_white;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(309, 572);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
-            this.btnSave.Size = new System.Drawing.Size(161, 39);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Image = global::ShippingManagementApp.Properties.Resources.Print_white;
-            this.btnPrint.Location = new System.Drawing.Point(363, 3);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(84, 54);
-            this.btnPrint.TabIndex = 4;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = global::ShippingManagementApp.Properties.Resources.Reboot_white;
-            this.btnRefresh.Location = new System.Drawing.Point(273, 3);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(84, 54);
-            this.btnRefresh.TabIndex = 3;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Image = global::ShippingManagementApp.Properties.Resources.Delete_User_Male_white;
-            this.btnDelete.Location = new System.Drawing.Point(183, 3);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(84, 54);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Image = global::ShippingManagementApp.Properties.Resources.Edit_User_white;
-            this.btnEdit.Location = new System.Drawing.Point(93, 3);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(84, 54);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = global::ShippingManagementApp.Properties.Resources.Add_User_Male_white;
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(84, 54);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ShippingManagementApp.Properties.Resources.Search;
-            this.pictureBox1.Location = new System.Drawing.Point(860, 67);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // CompanyId
             // 
             this.CompanyId.DataPropertyName = "CompanyID";
@@ -915,6 +719,87 @@ namespace ShippingManagementApp
             this.Address.Name = "Address";
             this.Address.ReadOnly = true;
             // 
+            // panelAdd
+            // 
+            this.panelAdd.BackColor = System.Drawing.Color.LightGray;
+            this.panelAdd.Controls.Add(this.dgvCompany);
+            this.panelAdd.Controls.Add(this.btnCancel);
+            this.panelAdd.Controls.Add(this.btnSave);
+            this.panelAdd.Controls.Add(this.panelCollaborationDate);
+            this.panelAdd.Controls.Add(this.lbFax);
+            this.panelAdd.Controls.Add(this.panelFax);
+            this.panelAdd.Controls.Add(this.txtCompanyID);
+            this.panelAdd.Controls.Add(this.btnPicDelete);
+            this.panelAdd.Controls.Add(this.btnPicOpen);
+            this.panelAdd.Controls.Add(this.panelStatus);
+            this.panelAdd.Controls.Add(this.panelBirthDate);
+            this.panelAdd.Controls.Add(this.groupBox1);
+            this.panelAdd.Controls.Add(this.lbCompanyType);
+            this.panelAdd.Controls.Add(this.panelCompanyType);
+            this.panelAdd.Controls.Add(this.lbEmail);
+            this.panelAdd.Controls.Add(this.panelEmail);
+            this.panelAdd.Controls.Add(this.lbAddress);
+            this.panelAdd.Controls.Add(this.panelAddress);
+            this.panelAdd.Controls.Add(this.lbCollaborationDate);
+            this.panelAdd.Controls.Add(this.lbPhone);
+            this.panelAdd.Controls.Add(this.lbMobile);
+            this.panelAdd.Controls.Add(this.lbRepresentative);
+            this.panelAdd.Controls.Add(this.lbStatus);
+            this.panelAdd.Controls.Add(this.panelPhone);
+            this.panelAdd.Controls.Add(this.panelMobile);
+            this.panelAdd.Controls.Add(this.panelRepresentative);
+            this.panelAdd.Controls.Add(this.label1);
+            this.panelAdd.Controls.Add(this.lbTitle);
+            this.panelAdd.Controls.Add(this.lbCompanyID);
+            this.panelAdd.Controls.Add(this.lbCompanyName);
+            this.panelAdd.Controls.Add(this.panelCompanyName);
+            this.panelAdd.Controls.Add(this.picCompany);
+            this.panelAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAdd.Location = new System.Drawing.Point(0, 100);
+            this.panelAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.panelAdd.Name = "panelAdd";
+            this.panelAdd.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.panelAdd.Size = new System.Drawing.Size(950, 650);
+            this.panelAdd.TabIndex = 3;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Image = global::ShippingManagementApp.Properties.Resources.Close_16;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(522, 572);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
+            this.btnCancel.Size = new System.Drawing.Size(161, 39);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Image = global::ShippingManagementApp.Properties.Resources.Done_white;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(309, 572);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(25, 0, 25, 0);
+            this.btnSave.Size = new System.Drawing.Size(161, 39);
+            this.btnSave.TabIndex = 13;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // panelCollaborationDate
             // 
             this.panelCollaborationDate.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -949,6 +834,121 @@ namespace ShippingManagementApp
             this.textBox1.Size = new System.Drawing.Size(155, 27);
             this.textBox1.TabIndex = 0;
             // 
+            // lbFax
+            // 
+            this.lbFax.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbFax.AutoSize = true;
+            this.lbFax.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFax.Location = new System.Drawing.Point(625, 394);
+            this.lbFax.Name = "lbFax";
+            this.lbFax.Size = new System.Drawing.Size(33, 20);
+            this.lbFax.TabIndex = 16;
+            this.lbFax.Text = "Fax";
+            // 
+            // panelFax
+            // 
+            this.panelFax.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelFax.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelFax.Controls.Add(this.txtFax);
+            this.panelFax.Location = new System.Drawing.Point(693, 389);
+            this.panelFax.Margin = new System.Windows.Forms.Padding(0);
+            this.panelFax.Name = "panelFax";
+            this.panelFax.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panelFax.Size = new System.Drawing.Size(155, 30);
+            this.panelFax.TabIndex = 15;
+            // 
+            // txtFax
+            // 
+            this.txtFax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFax.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFax.Location = new System.Drawing.Point(0, 0);
+            this.txtFax.Multiline = true;
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(155, 27);
+            this.txtFax.TabIndex = 0;
+            this.txtFax.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtFax_MouseClick);
+            this.txtFax.Leave += new System.EventHandler(this.txtFax_Leave);
+            // 
+            // btnPicDelete
+            // 
+            this.btnPicDelete.BackColor = System.Drawing.Color.White;
+            this.btnPicDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnPicDelete.FlatAppearance.BorderSize = 2;
+            this.btnPicDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPicDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPicDelete.ForeColor = System.Drawing.Color.White;
+            this.btnPicDelete.Image = global::ShippingManagementApp.Properties.Resources.Close_red;
+            this.btnPicDelete.Location = new System.Drawing.Point(770, 243);
+            this.btnPicDelete.Name = "btnPicDelete";
+            this.btnPicDelete.Size = new System.Drawing.Size(36, 39);
+            this.btnPicDelete.TabIndex = 13;
+            this.btnPicDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPicDelete.UseVisualStyleBackColor = false;
+            this.btnPicDelete.Click += new System.EventHandler(this.btnPicDelete_Click);
+            // 
+            // btnPicOpen
+            // 
+            this.btnPicOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(119)))), ((int)(((byte)(242)))));
+            this.btnPicOpen.FlatAppearance.BorderSize = 0;
+            this.btnPicOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPicOpen.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPicOpen.ForeColor = System.Drawing.Color.White;
+            this.btnPicOpen.Image = global::ShippingManagementApp.Properties.Resources.Opened_Folder_white;
+            this.btnPicOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPicOpen.Location = new System.Drawing.Point(689, 243);
+            this.btnPicOpen.Name = "btnPicOpen";
+            this.btnPicOpen.Size = new System.Drawing.Size(75, 39);
+            this.btnPicOpen.TabIndex = 13;
+            this.btnPicOpen.Text = "Open";
+            this.btnPicOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPicOpen.UseVisualStyleBackColor = false;
+            this.btnPicOpen.Click += new System.EventHandler(this.btnPicOpen_Click);
+            // 
+            // lbPhone
+            // 
+            this.lbPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbPhone.AutoSize = true;
+            this.lbPhone.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhone.Location = new System.Drawing.Point(602, 300);
+            this.lbPhone.Name = "lbPhone";
+            this.lbPhone.Size = new System.Drawing.Size(56, 20);
+            this.lbPhone.TabIndex = 2;
+            this.lbPhone.Text = "Phone";
+            // 
+            // panelPhone
+            // 
+            this.panelPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelPhone.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelPhone.Controls.Add(this.txtPhone);
+            this.panelPhone.Location = new System.Drawing.Point(693, 295);
+            this.panelPhone.Margin = new System.Windows.Forms.Padding(0);
+            this.panelPhone.Name = "panelPhone";
+            this.panelPhone.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panelPhone.Size = new System.Drawing.Size(155, 30);
+            this.panelPhone.TabIndex = 1;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPhone.Location = new System.Drawing.Point(0, 0);
+            this.txtPhone.Multiline = true;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(155, 27);
+            this.txtPhone.TabIndex = 0;
+            this.txtPhone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPhone_MouseClick);
+            this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
+            // 
+            // picCompany
+            // 
+            this.picCompany.Image = global::ShippingManagementApp.Properties.Resources.Company_blue;
+            this.picCompany.Location = new System.Drawing.Point(689, 139);
+            this.picCompany.Name = "picCompany";
+            this.picCompany.Size = new System.Drawing.Size(117, 100);
+            this.picCompany.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picCompany.TabIndex = 17;
+            this.picCompany.TabStop = false;
+            // 
             // frmCompanies
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -964,6 +964,7 @@ namespace ShippingManagementApp
             this.Load += new System.EventHandler(this.frmCompanies_Load);
             this.tlpPanelTop.ResumeLayout(false);
             this.tlpPanelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelCompanyName.ResumeLayout(false);
             this.panelCompanyName.PerformLayout();
             this.panelRepresentative.ResumeLayout(false);
@@ -980,14 +981,13 @@ namespace ShippingManagementApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompany)).EndInit();
             this.panelAdd.ResumeLayout(false);
             this.panelAdd.PerformLayout();
+            this.panelCollaborationDate.ResumeLayout(false);
+            this.panelCollaborationDate.PerformLayout();
             this.panelFax.ResumeLayout(false);
             this.panelFax.PerformLayout();
             this.panelPhone.ResumeLayout(false);
             this.panelPhone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCompany)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelCollaborationDate.ResumeLayout(false);
-            this.panelCollaborationDate.PerformLayout();
             this.ResumeLayout(false);
 
         }
