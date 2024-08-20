@@ -37,7 +37,44 @@ namespace Artan.DLL.Context
                 return repositoryCompanies;
             }
         }
+        private IRepositoryPost repositoryPost;
+        public IRepositoryPost RepositoryPost
+        {
+            get
+            {
+                if (repositoryPost == null)
+                {
+                    repositoryPost = new RepositoryPost(dbArtan);
+                }
+                return repositoryPost;
+            }
+        }
 
+        private IRepositoryPackage repositoryPackage;
+        public IRepositoryPackage RepositoryPackage
+        {
+            get
+            {
+                if (repositoryPackage == null)
+                {
+                    repositoryPackage = new RepositoryPackage(dbArtan);
+                }
+                return repositoryPackage;
+            }
+        }
+
+        private IRepositoryCondition repositoryCondition;
+        public IRepositoryCondition RepositoryCondition
+        {
+            get
+            {
+                if (repositoryCondition == null)
+                {
+                    repositoryCondition = new RepositoryCondition(dbArtan);
+                }
+                return repositoryCondition;
+            }
+        }
         public void Dispose()
         {
             dbArtan.Dispose();

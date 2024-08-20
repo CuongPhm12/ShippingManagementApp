@@ -99,9 +99,11 @@ namespace ShippingManagementApp
         private void btnOrders_Click(object sender, EventArgs e)
         {
             pnlClose(btnOrders);
+            pnlOpen(panelOrders, btnOrders);
+            LoadForm(new frm_Orders());
             //btnOrders.BackColor = Color.FromArgb(19, 164, 150);
-            btnOrders.BackColor = Color.FromArgb(67, 185, 47);
-            btnOrders.Location = new Point(0, 2);
+            //btnOrders.BackColor = Color.FromArgb(67, 185, 47);
+            //btnOrders.Location = new Point(0, 2);
         }
 
         private void btnAccounting_Click(object sender, EventArgs e)

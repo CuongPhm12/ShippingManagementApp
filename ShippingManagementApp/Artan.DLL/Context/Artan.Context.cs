@@ -33,6 +33,9 @@ namespace Artan.DLL.Context
         public virtual DbSet<vw_Persons> vw_Persons { get; set; }
         public virtual DbSet<tbl_Companies> tbl_Companies { get; set; }
         public virtual DbSet<vw_Companies> vw_Companies { get; set; }
+        public virtual DbSet<tbl_Package> tbl_Package { get; set; }
+        public virtual DbSet<tbl_Post> tbl_Post { get; set; }
+        public virtual DbSet<tbl_Condition> tbl_Condition { get; set; }
     
         public virtual int sp_PersonDelete(Nullable<int> personID)
         {

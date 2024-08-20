@@ -109,6 +109,7 @@
     <EntitySetMapping Name="vw_Companies">
       <EntityTypeMapping TypeName="Artan_DBModel.vw_Companies">
         <MappingFragment StoreEntitySet="vw_Companies">
+          <ScalarProperty Name="NameCo" ColumnName="NameCo" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="Pic" ColumnName="Pic" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -147,5 +148,29 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_CompanyUpdate" FunctionName="Artan_DBModel.Store.sp_CompanyUpdate" />
+    <EntitySetMapping Name="tbl_Package">
+      <EntityTypeMapping TypeName="Artan_DBModel.tbl_Package">
+        <MappingFragment StoreEntitySet="tbl_Package">
+          <ScalarProperty Name="PackageTitle" ColumnName="PackageTitle" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Post">
+      <EntityTypeMapping TypeName="Artan_DBModel.tbl_Post">
+        <MappingFragment StoreEntitySet="tbl_Post">
+          <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Condition">
+      <EntityTypeMapping TypeName="Artan_DBModel.tbl_Condition">
+        <MappingFragment StoreEntitySet="tbl_Condition">
+          <ScalarProperty Name="ConditionTitle" ColumnName="ConditionTitle" />
+          <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

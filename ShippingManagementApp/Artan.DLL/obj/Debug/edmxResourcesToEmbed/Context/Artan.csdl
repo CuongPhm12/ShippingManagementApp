@@ -135,6 +135,9 @@
       <Parameter Name="Pic" Mode="In" Type="Binary" />
       <Parameter Name="CreateDate" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="tbl_Package" EntityType="Artan_DBModel.tbl_Package" />
+    <EntitySet Name="tbl_Post" EntityType="Artan_DBModel.tbl_Post" />
+    <EntitySet Name="tbl_Condition" EntityType="Artan_DBModel.tbl_Condition" />
   </EntityContainer>
   <ComplexType Name="sp_PersonSearch_Result">
     <Property Type="Int32" Name="PersonID" Nullable="false" />
@@ -191,6 +194,7 @@
     <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NameCo" Type="String" MaxLength="102" FixedLength="false" Unicode="true" />
   </EntityType>
   <ComplexType Name="sp_CompanySearch_Result">
     <Property Type="Int32" Name="CompanyID" Nullable="false" />
@@ -207,4 +211,25 @@
     <Property Type="Binary" Name="Pic" Nullable="true" MaxLength="Max" />
     <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <EntityType Name="tbl_Package">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Post">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Condition">
+    <Key>
+      <PropertyRef Name="ConditionID" />
+    </Key>
+    <Property Name="ConditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConditionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

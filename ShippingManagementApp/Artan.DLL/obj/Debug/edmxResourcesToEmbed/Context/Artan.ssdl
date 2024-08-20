@@ -19,12 +19,26 @@
     <Property Name="Pic" Type="image" />
     <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tbl_Condition">
+    <Key>
+      <PropertyRef Name="ConditionID" />
+    </Key>
+    <Property Name="ConditionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConditionTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_Education">
     <Key>
       <PropertyRef Name="EducationID" />
     </Key>
     <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Package">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageTitle" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Persons">
     <Key>
@@ -52,6 +66,13 @@
     <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PositionTitle" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tbl_Post">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_Companies">
@@ -61,6 +82,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary 
     <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
     <Property Name="Representative" Type="nvarchar" MaxLength="50" />
+    <Property Name="NameCo" Type="nvarchar" MaxLength="102" />
     <Property Name="CompanyType" Type="varchar" MaxLength="8" />
     <Property Name="CollaborationDate" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
@@ -171,14 +193,18 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
   </Function>
   <EntityContainer Name="Artan_DBModelStoreContainer">
     <EntitySet Name="tbl_Companies" EntityType="Self.tbl_Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Condition" EntityType="Self.tbl_Condition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Package" EntityType="Self.tbl_Package" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Post" EntityType="Self.tbl_Post" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vw_Companies" EntityType="Self.vw_Companies" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_Companies].[CompanyID] AS [CompanyID], 
     [vw_Companies].[CompanyName] AS [CompanyName], 
     [vw_Companies].[Representative] AS [Representative], 
+    [vw_Companies].[NameCo] AS [NameCo], 
     [vw_Companies].[CompanyType] AS [CompanyType], 
     [vw_Companies].[CollaborationDate] AS [CollaborationDate], 
     [vw_Companies].[Email] AS [Email], 

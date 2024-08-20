@@ -27,5 +27,6 @@ namespace Artan.DLL.Context
         public string Address { get; set; }
         public byte[] Pic { get; set; }
         public string CreateDate { get; set; }
+        public string NameCo { get; set; }
     }
 }
