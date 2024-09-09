@@ -68,6 +68,9 @@
     <Compile Include="Context\sp_CompanySearch_Result.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\sp_OrderSearch_Result.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\sp_PersonSearch_Result.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
@@ -78,6 +81,9 @@
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\tbl_Education.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\tbl_Orders.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\tbl_Package.cs">
@@ -94,6 +100,9 @@
     </Compile>
     <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="Context\vw_Companies.cs">
+      <DependentUpon>Artan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\vw_Orders.cs">
       <DependentUpon>Artan.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\vw_Persons.cs">

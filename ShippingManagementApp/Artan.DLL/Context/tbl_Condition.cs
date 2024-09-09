@@ -14,7 +14,16 @@ namespace Artan.DLL.Context
     
     public partial class tbl_Condition
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Condition()
+        {
+            this.tbl_Orders = new HashSet<tbl_Orders>();
+        }
+    
         public int ConditionID { get; set; }
         public string ConditionTitle { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Orders> tbl_Orders { get; set; }
     }
 }

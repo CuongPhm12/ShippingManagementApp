@@ -36,6 +36,8 @@ namespace Artan.DLL.Context
         public virtual DbSet<tbl_Package> tbl_Package { get; set; }
         public virtual DbSet<tbl_Post> tbl_Post { get; set; }
         public virtual DbSet<tbl_Condition> tbl_Condition { get; set; }
+        public virtual DbSet<tbl_Orders> tbl_Orders { get; set; }
+        public virtual DbSet<vw_Orders> vw_Orders { get; set; }
     
         public virtual int sp_PersonDelete(Nullable<int> personID)
         {
@@ -295,6 +297,234 @@ namespace Artan.DLL.Context
                 new ObjectParameter("CreateDate", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CompanyUpdate", companyIDParameter, companyNameParameter, representativeParameter, companyTypeParameter, collaborationDateParameter, emailParameter, mobileParameter, faxParameter, statusParameter, addressParameter, picParameter, createDateParameter);
+        }
+    
+        public virtual int sp_OrderDelete(Nullable<int> orderID)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OrderDelete", orderIDParameter);
+        }
+    
+        public virtual int sp_OrderInsert(Nullable<int> orderID, string orderDate, Nullable<bool> paymentStatus, Nullable<int> conditionID, Nullable<int> senderID, string sender, string senderName, string senderMobile, string senderAddress, Nullable<int> receiverID, string receiver, string receiverName, string receiverMobile, string receiverAddress, Nullable<int> postID, Nullable<int> packageID, Nullable<bool> payment, string weight, string number, string shippingCosts, string adminstrativeCosts, string discount, string totalCost, string description, string createDate)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            var orderDateParameter = orderDate != null ?
+                new ObjectParameter("OrderDate", orderDate) :
+                new ObjectParameter("OrderDate", typeof(string));
+    
+            var paymentStatusParameter = paymentStatus.HasValue ?
+                new ObjectParameter("PaymentStatus", paymentStatus) :
+                new ObjectParameter("PaymentStatus", typeof(bool));
+    
+            var conditionIDParameter = conditionID.HasValue ?
+                new ObjectParameter("ConditionID", conditionID) :
+                new ObjectParameter("ConditionID", typeof(int));
+    
+            var senderIDParameter = senderID.HasValue ?
+                new ObjectParameter("SenderID", senderID) :
+                new ObjectParameter("SenderID", typeof(int));
+    
+            var senderParameter = sender != null ?
+                new ObjectParameter("Sender", sender) :
+                new ObjectParameter("Sender", typeof(string));
+    
+            var senderNameParameter = senderName != null ?
+                new ObjectParameter("SenderName", senderName) :
+                new ObjectParameter("SenderName", typeof(string));
+    
+            var senderMobileParameter = senderMobile != null ?
+                new ObjectParameter("SenderMobile", senderMobile) :
+                new ObjectParameter("SenderMobile", typeof(string));
+    
+            var senderAddressParameter = senderAddress != null ?
+                new ObjectParameter("SenderAddress", senderAddress) :
+                new ObjectParameter("SenderAddress", typeof(string));
+    
+            var receiverIDParameter = receiverID.HasValue ?
+                new ObjectParameter("ReceiverID", receiverID) :
+                new ObjectParameter("ReceiverID", typeof(int));
+    
+            var receiverParameter = receiver != null ?
+                new ObjectParameter("Receiver", receiver) :
+                new ObjectParameter("Receiver", typeof(string));
+    
+            var receiverNameParameter = receiverName != null ?
+                new ObjectParameter("ReceiverName", receiverName) :
+                new ObjectParameter("ReceiverName", typeof(string));
+    
+            var receiverMobileParameter = receiverMobile != null ?
+                new ObjectParameter("ReceiverMobile", receiverMobile) :
+                new ObjectParameter("ReceiverMobile", typeof(string));
+    
+            var receiverAddressParameter = receiverAddress != null ?
+                new ObjectParameter("ReceiverAddress", receiverAddress) :
+                new ObjectParameter("ReceiverAddress", typeof(string));
+    
+            var postIDParameter = postID.HasValue ?
+                new ObjectParameter("PostID", postID) :
+                new ObjectParameter("PostID", typeof(int));
+    
+            var packageIDParameter = packageID.HasValue ?
+                new ObjectParameter("PackageID", packageID) :
+                new ObjectParameter("PackageID", typeof(int));
+    
+            var paymentParameter = payment.HasValue ?
+                new ObjectParameter("Payment", payment) :
+                new ObjectParameter("Payment", typeof(bool));
+    
+            var weightParameter = weight != null ?
+                new ObjectParameter("Weight", weight) :
+                new ObjectParameter("Weight", typeof(string));
+    
+            var numberParameter = number != null ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(string));
+    
+            var shippingCostsParameter = shippingCosts != null ?
+                new ObjectParameter("ShippingCosts", shippingCosts) :
+                new ObjectParameter("ShippingCosts", typeof(string));
+    
+            var adminstrativeCostsParameter = adminstrativeCosts != null ?
+                new ObjectParameter("AdminstrativeCosts", adminstrativeCosts) :
+                new ObjectParameter("AdminstrativeCosts", typeof(string));
+    
+            var discountParameter = discount != null ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(string));
+    
+            var totalCostParameter = totalCost != null ?
+                new ObjectParameter("TotalCost", totalCost) :
+                new ObjectParameter("TotalCost", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var createDateParameter = createDate != null ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OrderInsert", orderIDParameter, orderDateParameter, paymentStatusParameter, conditionIDParameter, senderIDParameter, senderParameter, senderNameParameter, senderMobileParameter, senderAddressParameter, receiverIDParameter, receiverParameter, receiverNameParameter, receiverMobileParameter, receiverAddressParameter, postIDParameter, packageIDParameter, paymentParameter, weightParameter, numberParameter, shippingCostsParameter, adminstrativeCostsParameter, discountParameter, totalCostParameter, descriptionParameter, createDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_OrderSearch_Result> sp_OrderSearch(string searchName)
+        {
+            var searchNameParameter = searchName != null ?
+                new ObjectParameter("SearchName", searchName) :
+                new ObjectParameter("SearchName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_OrderSearch_Result>("sp_OrderSearch", searchNameParameter);
+        }
+    
+        public virtual int sp_OrderUpdate(Nullable<int> orderID, string orderDate, Nullable<bool> paymentStatus, Nullable<int> conditionID, Nullable<int> senderID, string sender, string senderName, string senderMobile, string senderAddress, Nullable<int> receiverID, string receiver, string receiverName, string receiverMobile, string receiverAddress, Nullable<int> postID, Nullable<int> packageID, Nullable<bool> payment, string weight, string number, string shippingCosts, string adminstrativeCosts, string discount, string totalCost, string description, string createDate)
+        {
+            var orderIDParameter = orderID.HasValue ?
+                new ObjectParameter("OrderID", orderID) :
+                new ObjectParameter("OrderID", typeof(int));
+    
+            var orderDateParameter = orderDate != null ?
+                new ObjectParameter("OrderDate", orderDate) :
+                new ObjectParameter("OrderDate", typeof(string));
+    
+            var paymentStatusParameter = paymentStatus.HasValue ?
+                new ObjectParameter("PaymentStatus", paymentStatus) :
+                new ObjectParameter("PaymentStatus", typeof(bool));
+    
+            var conditionIDParameter = conditionID.HasValue ?
+                new ObjectParameter("ConditionID", conditionID) :
+                new ObjectParameter("ConditionID", typeof(int));
+    
+            var senderIDParameter = senderID.HasValue ?
+                new ObjectParameter("SenderID", senderID) :
+                new ObjectParameter("SenderID", typeof(int));
+    
+            var senderParameter = sender != null ?
+                new ObjectParameter("Sender", sender) :
+                new ObjectParameter("Sender", typeof(string));
+    
+            var senderNameParameter = senderName != null ?
+                new ObjectParameter("SenderName", senderName) :
+                new ObjectParameter("SenderName", typeof(string));
+    
+            var senderMobileParameter = senderMobile != null ?
+                new ObjectParameter("SenderMobile", senderMobile) :
+                new ObjectParameter("SenderMobile", typeof(string));
+    
+            var senderAddressParameter = senderAddress != null ?
+                new ObjectParameter("SenderAddress", senderAddress) :
+                new ObjectParameter("SenderAddress", typeof(string));
+    
+            var receiverIDParameter = receiverID.HasValue ?
+                new ObjectParameter("ReceiverID", receiverID) :
+                new ObjectParameter("ReceiverID", typeof(int));
+    
+            var receiverParameter = receiver != null ?
+                new ObjectParameter("Receiver", receiver) :
+                new ObjectParameter("Receiver", typeof(string));
+    
+            var receiverNameParameter = receiverName != null ?
+                new ObjectParameter("ReceiverName", receiverName) :
+                new ObjectParameter("ReceiverName", typeof(string));
+    
+            var receiverMobileParameter = receiverMobile != null ?
+                new ObjectParameter("ReceiverMobile", receiverMobile) :
+                new ObjectParameter("ReceiverMobile", typeof(string));
+    
+            var receiverAddressParameter = receiverAddress != null ?
+                new ObjectParameter("ReceiverAddress", receiverAddress) :
+                new ObjectParameter("ReceiverAddress", typeof(string));
+    
+            var postIDParameter = postID.HasValue ?
+                new ObjectParameter("PostID", postID) :
+                new ObjectParameter("PostID", typeof(int));
+    
+            var packageIDParameter = packageID.HasValue ?
+                new ObjectParameter("PackageID", packageID) :
+                new ObjectParameter("PackageID", typeof(int));
+    
+            var paymentParameter = payment.HasValue ?
+                new ObjectParameter("Payment", payment) :
+                new ObjectParameter("Payment", typeof(bool));
+    
+            var weightParameter = weight != null ?
+                new ObjectParameter("Weight", weight) :
+                new ObjectParameter("Weight", typeof(string));
+    
+            var numberParameter = number != null ?
+                new ObjectParameter("Number", number) :
+                new ObjectParameter("Number", typeof(string));
+    
+            var shippingCostsParameter = shippingCosts != null ?
+                new ObjectParameter("ShippingCosts", shippingCosts) :
+                new ObjectParameter("ShippingCosts", typeof(string));
+    
+            var adminstrativeCostsParameter = adminstrativeCosts != null ?
+                new ObjectParameter("AdminstrativeCosts", adminstrativeCosts) :
+                new ObjectParameter("AdminstrativeCosts", typeof(string));
+    
+            var discountParameter = discount != null ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(string));
+    
+            var totalCostParameter = totalCost != null ?
+                new ObjectParameter("TotalCost", totalCost) :
+                new ObjectParameter("TotalCost", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var createDateParameter = createDate != null ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OrderUpdate", orderIDParameter, orderDateParameter, paymentStatusParameter, conditionIDParameter, senderIDParameter, senderParameter, senderNameParameter, senderMobileParameter, senderAddressParameter, receiverIDParameter, receiverParameter, receiverNameParameter, receiverMobileParameter, receiverAddressParameter, postIDParameter, packageIDParameter, paymentParameter, weightParameter, numberParameter, shippingCostsParameter, adminstrativeCostsParameter, discountParameter, totalCostParameter, descriptionParameter, createDateParameter);
         }
     }
 }

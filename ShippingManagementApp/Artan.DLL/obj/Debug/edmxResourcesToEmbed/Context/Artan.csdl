@@ -138,6 +138,80 @@
     <EntitySet Name="tbl_Package" EntityType="Artan_DBModel.tbl_Package" />
     <EntitySet Name="tbl_Post" EntityType="Artan_DBModel.tbl_Post" />
     <EntitySet Name="tbl_Condition" EntityType="Artan_DBModel.tbl_Condition" />
+    <EntitySet Name="tbl_Orders" EntityType="Artan_DBModel.tbl_Orders" />
+    <EntitySet Name="vw_Orders" EntityType="Artan_DBModel.vw_Orders" />
+    <AssociationSet Name="Condition1_PK" Association="Artan_DBModel.Condition1_PK">
+      <End Role="tbl_Condition" EntitySet="tbl_Condition" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Package1_PK" Association="Artan_DBModel.Package1_PK">
+      <End Role="tbl_Package" EntitySet="tbl_Package" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Post1_PK" Association="Artan_DBModel.Post1_PK">
+      <End Role="tbl_Post" EntitySet="tbl_Post" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
+    <FunctionImport Name="sp_OrderDelete">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_OrderInsert">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDate" Mode="In" Type="String" />
+      <Parameter Name="PaymentStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="ConditionID" Mode="In" Type="Int32" />
+      <Parameter Name="SenderID" Mode="In" Type="Int32" />
+      <Parameter Name="Sender" Mode="In" Type="String" />
+      <Parameter Name="SenderName" Mode="In" Type="String" />
+      <Parameter Name="SenderMobile" Mode="In" Type="String" />
+      <Parameter Name="SenderAddress" Mode="In" Type="String" />
+      <Parameter Name="ReceiverID" Mode="In" Type="Int32" />
+      <Parameter Name="Receiver" Mode="In" Type="String" />
+      <Parameter Name="ReceiverName" Mode="In" Type="String" />
+      <Parameter Name="ReceiverMobile" Mode="In" Type="String" />
+      <Parameter Name="ReceiverAddress" Mode="In" Type="String" />
+      <Parameter Name="PostID" Mode="In" Type="Int32" />
+      <Parameter Name="PackageID" Mode="In" Type="Int32" />
+      <Parameter Name="Payment" Mode="In" Type="Boolean" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="ShippingCosts" Mode="In" Type="String" />
+      <Parameter Name="AdminstrativeCosts" Mode="In" Type="String" />
+      <Parameter Name="Discount" Mode="In" Type="String" />
+      <Parameter Name="TotalCost" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="CreateDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_OrderSearch" ReturnType="Collection(Artan_DBModel.sp_OrderSearch_Result)">
+      <Parameter Name="SearchName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_OrderUpdate">
+      <Parameter Name="OrderID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderDate" Mode="In" Type="String" />
+      <Parameter Name="PaymentStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="ConditionID" Mode="In" Type="Int32" />
+      <Parameter Name="SenderID" Mode="In" Type="Int32" />
+      <Parameter Name="Sender" Mode="In" Type="String" />
+      <Parameter Name="SenderName" Mode="In" Type="String" />
+      <Parameter Name="SenderMobile" Mode="In" Type="String" />
+      <Parameter Name="SenderAddress" Mode="In" Type="String" />
+      <Parameter Name="ReceiverID" Mode="In" Type="Int32" />
+      <Parameter Name="Receiver" Mode="In" Type="String" />
+      <Parameter Name="ReceiverName" Mode="In" Type="String" />
+      <Parameter Name="ReceiverMobile" Mode="In" Type="String" />
+      <Parameter Name="ReceiverAddress" Mode="In" Type="String" />
+      <Parameter Name="PostID" Mode="In" Type="Int32" />
+      <Parameter Name="PackageID" Mode="In" Type="Int32" />
+      <Parameter Name="Payment" Mode="In" Type="Boolean" />
+      <Parameter Name="Weight" Mode="In" Type="String" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="ShippingCosts" Mode="In" Type="String" />
+      <Parameter Name="AdminstrativeCosts" Mode="In" Type="String" />
+      <Parameter Name="Discount" Mode="In" Type="String" />
+      <Parameter Name="TotalCost" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="CreateDate" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_PersonSearch_Result">
     <Property Type="Int32" Name="PersonID" Nullable="false" />
@@ -217,6 +291,7 @@
     </Key>
     <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PackageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Package1_PK" FromRole="tbl_Package" ToRole="tbl_Orders" />
   </EntityType>
   <EntityType Name="tbl_Post">
     <Key>
@@ -224,6 +299,7 @@
     </Key>
     <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Post1_PK" FromRole="tbl_Post" ToRole="tbl_Orders" />
   </EntityType>
   <EntityType Name="tbl_Condition">
     <Key>
@@ -231,5 +307,141 @@
     </Key>
     <Property Name="ConditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ConditionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Condition1_PK" FromRole="tbl_Condition" ToRole="tbl_Orders" />
   </EntityType>
+  <EntityType Name="tbl_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="Boolean" />
+    <Property Name="ConditionID" Type="Int32" />
+    <Property Name="SenderID" Type="Int32" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="SenderAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverID" Type="Int32" />
+    <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PostID" Type="Int32" />
+    <Property Name="PackageID" Type="Int32" />
+    <Property Name="Payment" Type="Boolean" />
+    <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="AdminstrativeCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TotalCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Condition" Relationship="Artan_DBModel.Condition1_PK" FromRole="tbl_Orders" ToRole="tbl_Condition" />
+    <NavigationProperty Name="tbl_Package" Relationship="Artan_DBModel.Package1_PK" FromRole="tbl_Orders" ToRole="tbl_Package" />
+    <NavigationProperty Name="tbl_Post" Relationship="Artan_DBModel.Post1_PK" FromRole="tbl_Orders" ToRole="tbl_Post" />
+  </EntityType>
+  <EntityType Name="vw_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ConditionID" />
+      <PropertyRef Name="PostID" />
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="ConditionID" Type="Int32" Nullable="false" />
+    <Property Name="ConditionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderID" Type="Int32" />
+    <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SenderMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="SenderAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverID" Type="Int32" />
+    <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ReceiverAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PostID" Type="Int32" Nullable="false" />
+    <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PackageID" Type="Int32" Nullable="false" />
+    <Property Name="PackageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentType" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="AdminstrativeCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TotalCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="Condition1_PK">
+    <End Type="Artan_DBModel.tbl_Condition" Role="tbl_Condition" Multiplicity="0..1" />
+    <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Condition">
+        <PropertyRef Name="ConditionID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="ConditionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Package1_PK">
+    <End Type="Artan_DBModel.tbl_Package" Role="tbl_Package" Multiplicity="0..1" />
+    <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Package">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Post1_PK">
+    <End Type="Artan_DBModel.tbl_Post" Role="tbl_Post" Multiplicity="0..1" />
+    <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_OrderSearch_Result">
+    <Property Type="Int32" Name="OrderID" Nullable="false" />
+    <Property Type="String" Name="OrderDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentStatus" Nullable="true" MaxLength="6" />
+    <Property Type="Int32" Name="ConditionID" Nullable="false" />
+    <Property Type="String" Name="ConditionTitle" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="SenderID" Nullable="true" />
+    <Property Type="String" Name="Sender" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SenderMobile" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="SenderAddress" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="ReceiverID" Nullable="true" />
+    <Property Type="String" Name="Receiver" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReceiverName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ReceiverMobile" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="ReceiverAddress" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="PostID" Nullable="false" />
+    <Property Type="String" Name="PostTitle" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="PackageID" Nullable="false" />
+    <Property Type="String" Name="PackageTitle" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PaymentType" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Weight" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Number" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="ShippingCosts" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="AdminstrativeCosts" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Discount" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="TotalCost" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

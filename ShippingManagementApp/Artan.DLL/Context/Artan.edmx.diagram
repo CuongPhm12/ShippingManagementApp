@@ -4,16 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5312552c60cc45f9897f75b400fd0c3b" Name="Diagram1">
+      <Diagram DiagramId="5312552c60cc45f9897f75b400fd0c3b" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="Artan_DBModel.tbl_Education" Width="1.5" PointX="2.5" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Artan_DBModel.tbl_Persons" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Artan_DBModel.tbl_Position" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Artan_DBModel.vw_Persons" Width="1.5" PointX="11.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Artan_DBModel.vw_Persons" Width="1.5" PointX="15" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Artan_DBModel.tbl_Companies" Width="1.5" PointX="4.5" PointY="0.5" />
-        <EntityTypeShape EntityType="Artan_DBModel.vw_Companies" Width="1.5" PointX="9.375" PointY="0.625" />
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Package" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Post" Width="1.5" PointX="2.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Artan_DBModel.tbl_Condition" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Artan_DBModel.vw_Companies" Width="1.5" PointX="13" PointY="0.5" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Package" Width="1.5" PointX="8.25" PointY="4.125" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Post" Width="1.5" PointX="8.25" PointY="2.25" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Condition" Width="1.5" PointX="8.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Artan_DBModel.tbl_Orders" Width="1.5" PointX="6.625" PointY="0.5" />
+        <EntityTypeShape EntityType="Artan_DBModel.vw_Orders" Width="1.5" PointX="10" PointY="0.5" />
+        <AssociationConnector Association="Artan_DBModel.Condition1_PK" />
+        <AssociationConnector Association="Artan_DBModel.Package1_PK" />
+        <AssociationConnector Association="Artan_DBModel.Post1_PK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

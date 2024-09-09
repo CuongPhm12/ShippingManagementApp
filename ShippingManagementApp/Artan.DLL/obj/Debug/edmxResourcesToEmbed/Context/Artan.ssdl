@@ -33,6 +33,36 @@
     <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tbl_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="bit" />
+    <Property Name="ConditionID" Type="int" />
+    <Property Name="SenderID" Type="int" />
+    <Property Name="Sender" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderMobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="SenderAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReceiverID" Type="int" />
+    <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="ReceiverAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="PostID" Type="int" />
+    <Property Name="PackageID" Type="int" />
+    <Property Name="Payment" Type="bit" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="10" />
+    <Property Name="Number" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShippingCosts" Type="nvarchar" MaxLength="10" />
+    <Property Name="AdminstrativeCosts" Type="nvarchar" MaxLength="10" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="10" />
+    <Property Name="TotalCost" Type="nvarchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_Package">
     <Key>
       <PropertyRef Name="PackageID" />
@@ -95,6 +125,44 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary 
     <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ConditionID" />
+      <PropertyRef Name="PostID" />
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="varchar" MaxLength="6" />
+    <Property Name="ConditionID" Type="int" Nullable="false" />
+    <Property Name="ConditionTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderID" Type="int" />
+    <Property Name="Sender" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SenderMobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="SenderAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReceiverID" Type="int" />
+    <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="11" />
+    <Property Name="ReceiverAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="PostID" Type="int" Nullable="false" />
+    <Property Name="PostTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+    <Property Name="PackageTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentType" Type="varchar" MaxLength="11" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="10" />
+    <Property Name="Number" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShippingCosts" Type="nvarchar" MaxLength="10" />
+    <Property Name="AdminstrativeCosts" Type="nvarchar" MaxLength="10" />
+    <Property Name="Discount" Type="nvarchar" MaxLength="10" />
+    <Property Name="TotalCost" Type="nvarchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_Persons">
     <Key>
@@ -120,6 +188,42 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <Property Name="Password" Type="nvarchar" MaxLength="200" />
     <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="Condition1_PK">
+    <End Role="tbl_Condition" Type="Self.tbl_Condition" Multiplicity="0..1" />
+    <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Condition">
+        <PropertyRef Name="ConditionID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="ConditionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Package1_PK">
+    <End Role="tbl_Package" Type="Self.tbl_Package" Multiplicity="0..1" />
+    <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Package">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Post1_PK">
+    <End Role="tbl_Post" Type="Self.tbl_Post" Multiplicity="0..1" />
+    <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="tbl_Orders">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="sp_CompanyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CompanyID" Type="int" Mode="In" />
   </Function>
@@ -152,6 +256,66 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <Parameter Name="Status" Type="bit" Mode="In" />
     <Parameter Name="Address" Type="nvarchar" Mode="In" />
     <Parameter Name="Pic" Type="image" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+    <Parameter Name="OrderDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentStatus" Type="bit" Mode="In" />
+    <Parameter Name="ConditionID" Type="int" Mode="In" />
+    <Parameter Name="SenderID" Type="int" Mode="In" />
+    <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverID" Type="int" Mode="In" />
+    <Parameter Name="Receiver" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="PostID" Type="int" Mode="In" />
+    <Parameter Name="PackageID" Type="int" Mode="In" />
+    <Parameter Name="Payment" Type="bit" Mode="In" />
+    <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="ShippingCosts" Type="nvarchar" Mode="In" />
+    <Parameter Name="AdminstrativeCosts" Type="nvarchar" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_OrderUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+    <Parameter Name="OrderDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="PaymentStatus" Type="bit" Mode="In" />
+    <Parameter Name="ConditionID" Type="int" Mode="In" />
+    <Parameter Name="SenderID" Type="int" Mode="In" />
+    <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderName" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="SenderAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverID" Type="int" Mode="In" />
+    <Parameter Name="Receiver" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="ReceiverAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="PostID" Type="int" Mode="In" />
+    <Parameter Name="PackageID" Type="int" Mode="In" />
+    <Parameter Name="Payment" Type="bit" Mode="In" />
+    <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number" Type="nvarchar" Mode="In" />
+    <Parameter Name="ShippingCosts" Type="nvarchar" Mode="In" />
+    <Parameter Name="AdminstrativeCosts" Type="nvarchar" Mode="In" />
+    <Parameter Name="Discount" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
     <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -195,6 +359,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <EntitySet Name="tbl_Companies" EntityType="Self.tbl_Companies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Condition" EntityType="Self.tbl_Condition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Orders" EntityType="Self.tbl_Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Package" EntityType="Self.tbl_Package" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
@@ -217,6 +382,38 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     [vw_Companies].[CreateDate] AS [CreateDate]
     FROM [dbo].[vw_Companies] AS [vw_Companies]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="vw_Orders" EntityType="Self.vw_Orders" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Orders].[OrderID] AS [OrderID], 
+    [vw_Orders].[OrderDate] AS [OrderDate], 
+    [vw_Orders].[PaymentStatus] AS [PaymentStatus], 
+    [vw_Orders].[ConditionID] AS [ConditionID], 
+    [vw_Orders].[ConditionTitle] AS [ConditionTitle], 
+    [vw_Orders].[SenderID] AS [SenderID], 
+    [vw_Orders].[Sender] AS [Sender], 
+    [vw_Orders].[SenderName] AS [SenderName], 
+    [vw_Orders].[SenderMobile] AS [SenderMobile], 
+    [vw_Orders].[SenderAddress] AS [SenderAddress], 
+    [vw_Orders].[ReceiverID] AS [ReceiverID], 
+    [vw_Orders].[Receiver] AS [Receiver], 
+    [vw_Orders].[ReceiverName] AS [ReceiverName], 
+    [vw_Orders].[ReceiverMobile] AS [ReceiverMobile], 
+    [vw_Orders].[ReceiverAddress] AS [ReceiverAddress], 
+    [vw_Orders].[PostID] AS [PostID], 
+    [vw_Orders].[PostTitle] AS [PostTitle], 
+    [vw_Orders].[PackageID] AS [PackageID], 
+    [vw_Orders].[PackageTitle] AS [PackageTitle], 
+    [vw_Orders].[PaymentType] AS [PaymentType], 
+    [vw_Orders].[Weight] AS [Weight], 
+    [vw_Orders].[Number] AS [Number], 
+    [vw_Orders].[ShippingCosts] AS [ShippingCosts], 
+    [vw_Orders].[AdminstrativeCosts] AS [AdminstrativeCosts], 
+    [vw_Orders].[Discount] AS [Discount], 
+    [vw_Orders].[TotalCost] AS [TotalCost], 
+    [vw_Orders].[Description] AS [Description], 
+    [vw_Orders].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Orders] AS [vw_Orders]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [vw_Persons].[PersonID] AS [PersonID], 
@@ -238,5 +435,17 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     [vw_Persons].[CreateDate] AS [CreateDate]
     FROM [dbo].[vw_Persons] AS [vw_Persons]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="Condition1_PK" Association="Self.Condition1_PK">
+      <End Role="tbl_Condition" EntitySet="tbl_Condition" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Package1_PK" Association="Self.Package1_PK">
+      <End Role="tbl_Package" EntitySet="tbl_Package" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Post1_PK" Association="Self.Post1_PK">
+      <End Role="tbl_Post" EntitySet="tbl_Post" />
+      <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

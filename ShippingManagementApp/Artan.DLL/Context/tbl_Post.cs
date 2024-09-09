@@ -14,7 +14,16 @@ namespace Artan.DLL.Context
     
     public partial class tbl_Post
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Post()
+        {
+            this.tbl_Orders = new HashSet<tbl_Orders>();
+        }
+    
         public int PostID { get; set; }
         public string PostTitle { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Orders> tbl_Orders { get; set; }
     }
 }

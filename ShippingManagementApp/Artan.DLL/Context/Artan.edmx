@@ -38,6 +38,36 @@
           <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EducationTitle" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="bit" />
+          <Property Name="ConditionID" Type="int" />
+          <Property Name="SenderID" Type="int" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="SenderAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceiverID" Type="int" />
+          <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="ReceiverAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="PostID" Type="int" />
+          <Property Name="PackageID" Type="int" />
+          <Property Name="Payment" Type="bit" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="10" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShippingCosts" Type="nvarchar" MaxLength="10" />
+          <Property Name="AdminstrativeCosts" Type="nvarchar" MaxLength="10" />
+          <Property Name="Discount" Type="nvarchar" MaxLength="10" />
+          <Property Name="TotalCost" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tbl_Package">
           <Key>
             <PropertyRef Name="PackageID" />
@@ -100,6 +130,44 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Companies' does not have a primary 
           <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'DX_TEST.dbo.vw_Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ConditionID" />
+            <PropertyRef Name="PostID" />
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="varchar" MaxLength="6" />
+          <Property Name="ConditionID" Type="int" Nullable="false" />
+          <Property Name="ConditionTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderID" Type="int" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="SenderAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReceiverID" Type="int" />
+          <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="ReceiverAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="PostID" Type="int" Nullable="false" />
+          <Property Name="PostTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="PackageID" Type="int" Nullable="false" />
+          <Property Name="PackageTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="11" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="10" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShippingCosts" Type="nvarchar" MaxLength="10" />
+          <Property Name="AdminstrativeCosts" Type="nvarchar" MaxLength="10" />
+          <Property Name="Discount" Type="nvarchar" MaxLength="10" />
+          <Property Name="TotalCost" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_Persons">
           <Key>
@@ -125,6 +193,42 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Property Name="Password" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateDate" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="Condition1_PK">
+          <End Role="tbl_Condition" Type="Self.tbl_Condition" Multiplicity="0..1" />
+          <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Condition">
+              <PropertyRef Name="ConditionID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="ConditionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Package1_PK">
+          <End Role="tbl_Package" Type="Self.tbl_Package" Multiplicity="0..1" />
+          <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Post1_PK">
+          <End Role="tbl_Post" Type="Self.tbl_Post" Multiplicity="0..1" />
+          <End Role="tbl_Orders" Type="Self.tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="sp_CompanyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CompanyID" Type="int" Mode="In" />
         </Function>
@@ -157,6 +261,66 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Parameter Name="Status" Type="bit" Mode="In" />
           <Parameter Name="Address" Type="nvarchar" Mode="In" />
           <Parameter Name="Pic" Type="image" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_OrderDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_OrderInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="PaymentStatus" Type="bit" Mode="In" />
+          <Parameter Name="ConditionID" Type="int" Mode="In" />
+          <Parameter Name="SenderID" Type="int" Mode="In" />
+          <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverID" Type="int" Mode="In" />
+          <Parameter Name="Receiver" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostID" Type="int" Mode="In" />
+          <Parameter Name="PackageID" Type="int" Mode="In" />
+          <Parameter Name="Payment" Type="bit" Mode="In" />
+          <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+          <Parameter Name="Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="ShippingCosts" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdminstrativeCosts" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="nvarchar" Mode="In" />
+          <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_OrderSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_OrderUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="PaymentStatus" Type="bit" Mode="In" />
+          <Parameter Name="ConditionID" Type="int" Mode="In" />
+          <Parameter Name="SenderID" Type="int" Mode="In" />
+          <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderName" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="SenderAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverID" Type="int" Mode="In" />
+          <Parameter Name="Receiver" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReceiverAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="PostID" Type="int" Mode="In" />
+          <Parameter Name="PackageID" Type="int" Mode="In" />
+          <Parameter Name="Payment" Type="bit" Mode="In" />
+          <Parameter Name="Weight" Type="nvarchar" Mode="In" />
+          <Parameter Name="Number" Type="nvarchar" Mode="In" />
+          <Parameter Name="ShippingCosts" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdminstrativeCosts" Type="nvarchar" Mode="In" />
+          <Parameter Name="Discount" Type="nvarchar" Mode="In" />
+          <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
           <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -200,6 +364,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <EntitySet Name="tbl_Companies" EntityType="Self.tbl_Companies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Condition" EntityType="Self.tbl_Condition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Education" EntityType="Self.tbl_Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Orders" EntityType="Self.tbl_Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Package" EntityType="Self.tbl_Package" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Persons" EntityType="Self.tbl_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Position" EntityType="Self.tbl_Position" Schema="dbo" store:Type="Tables" />
@@ -222,6 +387,38 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     [vw_Companies].[CreateDate] AS [CreateDate]
     FROM [dbo].[vw_Companies] AS [vw_Companies]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_Orders" EntityType="Self.vw_Orders" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Orders].[OrderID] AS [OrderID], 
+    [vw_Orders].[OrderDate] AS [OrderDate], 
+    [vw_Orders].[PaymentStatus] AS [PaymentStatus], 
+    [vw_Orders].[ConditionID] AS [ConditionID], 
+    [vw_Orders].[ConditionTitle] AS [ConditionTitle], 
+    [vw_Orders].[SenderID] AS [SenderID], 
+    [vw_Orders].[Sender] AS [Sender], 
+    [vw_Orders].[SenderName] AS [SenderName], 
+    [vw_Orders].[SenderMobile] AS [SenderMobile], 
+    [vw_Orders].[SenderAddress] AS [SenderAddress], 
+    [vw_Orders].[ReceiverID] AS [ReceiverID], 
+    [vw_Orders].[Receiver] AS [Receiver], 
+    [vw_Orders].[ReceiverName] AS [ReceiverName], 
+    [vw_Orders].[ReceiverMobile] AS [ReceiverMobile], 
+    [vw_Orders].[ReceiverAddress] AS [ReceiverAddress], 
+    [vw_Orders].[PostID] AS [PostID], 
+    [vw_Orders].[PostTitle] AS [PostTitle], 
+    [vw_Orders].[PackageID] AS [PackageID], 
+    [vw_Orders].[PackageTitle] AS [PackageTitle], 
+    [vw_Orders].[PaymentType] AS [PaymentType], 
+    [vw_Orders].[Weight] AS [Weight], 
+    [vw_Orders].[Number] AS [Number], 
+    [vw_Orders].[ShippingCosts] AS [ShippingCosts], 
+    [vw_Orders].[AdminstrativeCosts] AS [AdminstrativeCosts], 
+    [vw_Orders].[Discount] AS [Discount], 
+    [vw_Orders].[TotalCost] AS [TotalCost], 
+    [vw_Orders].[Description] AS [Description], 
+    [vw_Orders].[CreateDate] AS [CreateDate]
+    FROM [dbo].[vw_Orders] AS [vw_Orders]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_Persons" EntityType="Self.vw_Persons" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_Persons].[PersonID] AS [PersonID], 
@@ -243,6 +440,18 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     [vw_Persons].[CreateDate] AS [CreateDate]
     FROM [dbo].[vw_Persons] AS [vw_Persons]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="Condition1_PK" Association="Self.Condition1_PK">
+            <End Role="tbl_Condition" EntitySet="tbl_Condition" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Package1_PK" Association="Self.Package1_PK">
+            <End Role="tbl_Package" EntitySet="tbl_Package" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Post1_PK" Association="Self.Post1_PK">
+            <End Role="tbl_Post" EntitySet="tbl_Post" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -386,6 +595,80 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <EntitySet Name="tbl_Package" EntityType="Artan_DBModel.tbl_Package" />
           <EntitySet Name="tbl_Post" EntityType="Artan_DBModel.tbl_Post" />
           <EntitySet Name="tbl_Condition" EntityType="Artan_DBModel.tbl_Condition" />
+          <EntitySet Name="tbl_Orders" EntityType="Artan_DBModel.tbl_Orders" />
+          <EntitySet Name="vw_Orders" EntityType="Artan_DBModel.vw_Orders" />
+          <AssociationSet Name="Condition1_PK" Association="Artan_DBModel.Condition1_PK">
+            <End Role="tbl_Condition" EntitySet="tbl_Condition" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Package1_PK" Association="Artan_DBModel.Package1_PK">
+            <End Role="tbl_Package" EntitySet="tbl_Package" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Post1_PK" Association="Artan_DBModel.Post1_PK">
+            <End Role="tbl_Post" EntitySet="tbl_Post" />
+            <End Role="tbl_Orders" EntitySet="tbl_Orders" />
+          </AssociationSet>
+          <FunctionImport Name="sp_OrderDelete">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_OrderInsert">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderDate" Mode="In" Type="String" />
+            <Parameter Name="PaymentStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="ConditionID" Mode="In" Type="Int32" />
+            <Parameter Name="SenderID" Mode="In" Type="Int32" />
+            <Parameter Name="Sender" Mode="In" Type="String" />
+            <Parameter Name="SenderName" Mode="In" Type="String" />
+            <Parameter Name="SenderMobile" Mode="In" Type="String" />
+            <Parameter Name="SenderAddress" Mode="In" Type="String" />
+            <Parameter Name="ReceiverID" Mode="In" Type="Int32" />
+            <Parameter Name="Receiver" Mode="In" Type="String" />
+            <Parameter Name="ReceiverName" Mode="In" Type="String" />
+            <Parameter Name="ReceiverMobile" Mode="In" Type="String" />
+            <Parameter Name="ReceiverAddress" Mode="In" Type="String" />
+            <Parameter Name="PostID" Mode="In" Type="Int32" />
+            <Parameter Name="PackageID" Mode="In" Type="Int32" />
+            <Parameter Name="Payment" Mode="In" Type="Boolean" />
+            <Parameter Name="Weight" Mode="In" Type="String" />
+            <Parameter Name="Number" Mode="In" Type="String" />
+            <Parameter Name="ShippingCosts" Mode="In" Type="String" />
+            <Parameter Name="AdminstrativeCosts" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="String" />
+            <Parameter Name="TotalCost" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_OrderSearch" ReturnType="Collection(Artan_DBModel.sp_OrderSearch_Result)">
+            <Parameter Name="SearchName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_OrderUpdate">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderDate" Mode="In" Type="String" />
+            <Parameter Name="PaymentStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="ConditionID" Mode="In" Type="Int32" />
+            <Parameter Name="SenderID" Mode="In" Type="Int32" />
+            <Parameter Name="Sender" Mode="In" Type="String" />
+            <Parameter Name="SenderName" Mode="In" Type="String" />
+            <Parameter Name="SenderMobile" Mode="In" Type="String" />
+            <Parameter Name="SenderAddress" Mode="In" Type="String" />
+            <Parameter Name="ReceiverID" Mode="In" Type="Int32" />
+            <Parameter Name="Receiver" Mode="In" Type="String" />
+            <Parameter Name="ReceiverName" Mode="In" Type="String" />
+            <Parameter Name="ReceiverMobile" Mode="In" Type="String" />
+            <Parameter Name="ReceiverAddress" Mode="In" Type="String" />
+            <Parameter Name="PostID" Mode="In" Type="Int32" />
+            <Parameter Name="PackageID" Mode="In" Type="Int32" />
+            <Parameter Name="Payment" Mode="In" Type="Boolean" />
+            <Parameter Name="Weight" Mode="In" Type="String" />
+            <Parameter Name="Number" Mode="In" Type="String" />
+            <Parameter Name="ShippingCosts" Mode="In" Type="String" />
+            <Parameter Name="AdminstrativeCosts" Mode="In" Type="String" />
+            <Parameter Name="Discount" Mode="In" Type="String" />
+            <Parameter Name="TotalCost" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_PersonSearch_Result">
           <Property Type="Int32" Name="PersonID" Nullable="false" />
@@ -465,6 +748,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           </Key>
           <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PackageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Package1_PK" FromRole="tbl_Package" ToRole="tbl_Orders" />
         </EntityType>
         <EntityType Name="tbl_Post">
           <Key>
@@ -472,6 +756,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           </Key>
           <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Post1_PK" FromRole="tbl_Post" ToRole="tbl_Orders" />
         </EntityType>
         <EntityType Name="tbl_Condition">
           <Key>
@@ -479,7 +764,143 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           </Key>
           <Property Name="ConditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConditionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Orders" Relationship="Artan_DBModel.Condition1_PK" FromRole="tbl_Condition" ToRole="tbl_Orders" />
         </EntityType>
+        <EntityType Name="tbl_Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="Boolean" />
+          <Property Name="ConditionID" Type="Int32" />
+          <Property Name="SenderID" Type="Int32" />
+          <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="SenderAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverID" Type="Int32" />
+          <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PostID" Type="Int32" />
+          <Property Name="PackageID" Type="Int32" />
+          <Property Name="Payment" Type="Boolean" />
+          <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AdminstrativeCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Condition" Relationship="Artan_DBModel.Condition1_PK" FromRole="tbl_Orders" ToRole="tbl_Condition" />
+          <NavigationProperty Name="tbl_Package" Relationship="Artan_DBModel.Package1_PK" FromRole="tbl_Orders" ToRole="tbl_Package" />
+          <NavigationProperty Name="tbl_Post" Relationship="Artan_DBModel.Post1_PK" FromRole="tbl_Orders" ToRole="tbl_Post" />
+        </EntityType>
+        <EntityType Name="vw_Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ConditionID" />
+            <PropertyRef Name="PostID" />
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionID" Type="Int32" Nullable="false" />
+          <Property Name="ConditionTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderID" Type="Int32" />
+          <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="SenderAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverID" Type="Int32" />
+          <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PostID" Type="Int32" Nullable="false" />
+          <Property Name="PostTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PackageID" Type="Int32" Nullable="false" />
+          <Property Name="PackageTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentType" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AdminstrativeCosts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="Condition1_PK">
+          <End Type="Artan_DBModel.tbl_Condition" Role="tbl_Condition" Multiplicity="0..1" />
+          <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Condition">
+              <PropertyRef Name="ConditionID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="ConditionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Package1_PK">
+          <End Type="Artan_DBModel.tbl_Package" Role="tbl_Package" Multiplicity="0..1" />
+          <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Post1_PK">
+          <End Type="Artan_DBModel.tbl_Post" Role="tbl_Post" Multiplicity="0..1" />
+          <End Type="Artan_DBModel.tbl_Orders" Role="tbl_Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="tbl_Orders">
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_OrderSearch_Result">
+          <Property Type="Int32" Name="OrderID" Nullable="false" />
+          <Property Type="String" Name="OrderDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PaymentStatus" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="ConditionID" Nullable="false" />
+          <Property Type="String" Name="ConditionTitle" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SenderID" Nullable="true" />
+          <Property Type="String" Name="Sender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SenderName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SenderMobile" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="SenderAddress" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="ReceiverID" Nullable="true" />
+          <Property Type="String" Name="Receiver" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReceiverName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReceiverMobile" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="ReceiverAddress" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="PostID" Nullable="false" />
+          <Property Type="String" Name="PostTitle" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PackageID" Nullable="false" />
+          <Property Type="String" Name="PackageTitle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PaymentType" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Weight" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Number" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ShippingCosts" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AdminstrativeCosts" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Discount" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TotalCost" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CreateDate" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -657,6 +1078,108 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Orders">
+            <EntityTypeMapping TypeName="Artan_DBModel.tbl_Orders">
+              <MappingFragment StoreEntitySet="tbl_Orders">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="AdminstrativeCosts" ColumnName="AdminstrativeCosts" />
+                <ScalarProperty Name="ShippingCosts" ColumnName="ShippingCosts" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
+                <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Orders">
+            <EntityTypeMapping TypeName="Artan_DBModel.vw_Orders">
+              <MappingFragment StoreEntitySet="vw_Orders">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="AdminstrativeCosts" ColumnName="AdminstrativeCosts" />
+                <ScalarProperty Name="ShippingCosts" ColumnName="ShippingCosts" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="PackageTitle" ColumnName="PackageTitle" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
+                <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="ConditionTitle" ColumnName="ConditionTitle" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_OrderDelete" FunctionName="Artan_DBModel.Store.sp_OrderDelete" />
+          <FunctionImportMapping FunctionImportName="sp_OrderInsert" FunctionName="Artan_DBModel.Store.sp_OrderInsert" />
+          <FunctionImportMapping FunctionImportName="sp_OrderSearch" FunctionName="Artan_DBModel.Store.sp_OrderSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Artan_DBModel.sp_OrderSearch_Result">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="ConditionTitle" ColumnName="ConditionTitle" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+                <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
+                <ScalarProperty Name="PostTitle" ColumnName="PostTitle" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PackageTitle" ColumnName="PackageTitle" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="ShippingCosts" ColumnName="ShippingCosts" />
+                <ScalarProperty Name="AdminstrativeCosts" ColumnName="AdminstrativeCosts" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_OrderUpdate" FunctionName="Artan_DBModel.Store.sp_OrderUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
