@@ -210,7 +210,6 @@
       <Parameter Name="Discount" Mode="In" Type="String" />
       <Parameter Name="TotalCost" Mode="In" Type="String" />
       <Parameter Name="Description" Mode="In" Type="String" />
-      <Parameter Name="CreateDate" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_PersonSearch_Result">

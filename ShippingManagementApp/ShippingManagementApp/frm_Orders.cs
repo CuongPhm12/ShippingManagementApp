@@ -22,8 +22,8 @@ namespace ShippingManagementApp
         {
             using (UnitOfWork db = new UnitOfWork())
             {
-                //dgvOrder.AutoGenerateColumns = false;
-                //dgvOrder.DataSource = await db.RepositoryCompanies.GetAllAsync();
+                dgvOrder.AutoGenerateColumns = false;
+                dgvOrder.DataSource = await db.RepositoryOrder.GetAllAsync();
             }
         }
 
@@ -134,15 +134,23 @@ namespace ShippingManagementApp
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             TextClear();
-            lbTitle.Text = "Add Order";
+            using (UnitOfWork db = new UnitOfWork())
+            {
+
+                lbTitle.Text = "Add Order";
+                if (dgvOrder.CurrentRow != null)
+                    txtOrderID.Text = ((await db.RepositoryOrder.GetAllAsync()).Max().OrderID + 1).ToString();
+                else
+                    txtOrderID.Text = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + 1;
+            }
             OpenClos();
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             TextClear();
             lbTitle.Text = "Edit User";
@@ -151,19 +159,35 @@ namespace ShippingManagementApp
             {
                 using (UnitOfWork db = new UnitOfWork())
                 {
-                    //var order = (await db.RepositoryCompanies.GetAllAsync()).SingleOrDefault(x => x.CompanyID == (int)dgvOrder.CurrentRow.Cells[0].Value);
-                    //txtCompanyID.Text = order.CompanyID.ToString();
-                    //dateCollaborationDate.Text = order.CollaborationDate;
-                    //txtCompanyName.Text = order.CompanyName;
-                    //txtRepresentative.Text = order.Representative;
-                    //cbCompanyType.SelectedIndex = (order.CompanyType == "true") ? 0 : 1;
-                    //txtEmail.Text = order.Email;
-                    //txtAddress.Text = order.Address;
-                    //txtMobile.Text = order.Mobile;
-                    //txtPhone.Text = order.Phone;
-                    //txtFax.Text = order.Fax;
-                    //rbActive.Checked = (order.Status == "Male") ? true : false;
-                    //rbInActive.Checked = (order.Status == "Male") ? true : false;
+                    var order = (await db.RepositoryOrder.GetAllAsync()).SingleOrDefault(x => x.OrderID == (int)dgvOrder.CurrentRow.Cells[0].Value);
+                    txtOrderID.Text = order.OrderID.ToString();
+                    dateOrderDate.Text = order.OrderDate;
+                    cbCondition.SelectedValue = order.ConditionTitle;
+                    rbPaid.Checked = (order.PaymentStatus == "Paid") ? true : false;
+                    rbUnpaid.Checked = (order.PaymentStatus == "Paid") ? false : true;
+                    cbSenderID.SelectedValue = order.SenderID;
+                    txtSender.Text = order.Sender;
+                    txtSenderName.Text = order.SenderName;
+                    txtMobileSender.Text = order.SenderMobile;
+                    txtSenderAddress.Text = order.SenderAddress;
+                    cbReceiverID.SelectedValue = order.ReceiverID;
+                    txtReceiver.Text = order.Receiver;
+                    txtReceiverName.Text = order.ReceiverName;
+                    txtMobileReceiver.Text = order.ReceiverMobile;
+                    txtReceiverAddress.Text = order.ReceiverAddress;
+                    cbPostType.SelectedValue = order.PostTitle;
+                    cbPackageType.SelectedValue = order.PackageTitle;
+                    rbOrigin.Checked = (order.PaymentType == "Origin") ? true : false;
+                    rbDestination.Checked = (order.PaymentType == "Origin") ? false : true;
+                    txtWeight.Text = order.Weight;
+                    numUDNumber.Text = order.Number;
+                    txtTotalCost.Text = order.TotalCost;
+                    txtAdministrativeCosts.Text = order.AdminstrativeCosts;
+                    //txtServiceCosts.Text = order.ServiceCosts;
+                    txtShippingCosts.Text = order.ShippingCosts;
+                    txtDiscount.Text = order.Discount;
+                    txtDescription.Text = order.Description;
+
 
 
                 }
@@ -171,17 +195,17 @@ namespace ShippingManagementApp
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvOrder.CurrentRow != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete" + dgvOrder.CurrentRow.Cells[1].Value + "company?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete" + dgvOrder.CurrentRow.Cells[1].Value + "Order?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     using (UnitOfWork db = new UnitOfWork())
                     {
                         var id = (int)dgvOrder.CurrentRow.Cells[0].Value;
 
-                        //await db.RepositoryCompanies.DeleteAsync(id);
+                        await db.RepositoryOrder.DeleteAsync(id);
                     }
                     ReView();
                 }
@@ -193,9 +217,100 @@ namespace ShippingManagementApp
             ReView();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+            foreach (var gb in panelAddPage1.Controls.OfType<GroupBox>())
+            {
 
+                foreach (var pnl in gb.Controls.OfType<Panel>())
+                {
+                    pnl.BackColor = Color.Gainsboro;
+                    foreach (var txt in pnl.Controls.OfType<TextBox>())
+                    {
+                        if (txt.Text == string.Empty)
+                        {
+                            pnl.BackColor = Color.FromArgb(183, 9, 76);
+                        }
+                    }
+                }
+            }
+            foreach (var gb in panelAddPage2.Controls.OfType<GroupBox>())
+            {
+
+                foreach (var pnl in gb.Controls.OfType<Panel>())
+                {
+                    pnl.BackColor = Color.Gainsboro;
+                    foreach (var txt in pnl.Controls.OfType<TextBox>())
+                    {
+                        if (txt.Text == string.Empty)
+                        {
+                            pnl.BackColor = Color.FromArgb(183, 9, 76);
+                        }
+                    }
+                }
+            }
+            if (rbPaid.Checked == false && rbUnpaid.Checked == false)
+            {
+                panelPaymentStatus.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (cbCondition.SelectedIndex == 0)
+            {
+                panelCondition.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (dateOrderDate.Text == string.Empty)
+            {
+                panelOrderDate.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (cbPackageType.SelectedIndex == 0)
+            {
+                panelPackageType.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (cbPostType.SelectedIndex == 0)
+            {
+                panelPostType.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (rbOrigin.Checked == false && rbDestination.Checked == false)
+            {
+                panelPaymentType.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            if (txtDescription.Text == String.Empty)
+            {
+                panelDescription.BackColor = Color.FromArgb(183, 9, 76);
+            }
+            else if (txtSenderName.Text != string.Empty & txtReceiverName.Text != string.Empty & txtWeight.Text != string.Empty
+                & numUDNumber.Text != string.Empty & cbPackageType.SelectedIndex != 0 & cbPostType.SelectedIndex != 0)
+            {
+
+                if (lbTitle.Text == "Add Order")
+                {
+
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        await db.RepositoryOrder.InsertAsync(Convert.ToInt32(txtOrderID.Text), dateOrderDate.Text, (rbPaid.Checked) ? true : false, cbCondition.SelectedIndex, cbSenderID.SelectedIndex,
+                            txtSender.Text, txtSenderName.Text, txtMobileSender.Text, txtSenderAddress.Text, cbReceiverID.SelectedIndex, txtReceiver.Text,
+                            txtReceiverName.Text, txtMobileReceiver.Text, txtReceiverAddress.Text, cbPostType.SelectedIndex, cbPackageType.SelectedIndex,
+                            (rbOrigin.Checked) ? true : false, txtWeight.Text, numUDNumber.Text, txtShippingCosts.Text,
+                            //txtServiceCosts.Text,
+                            txtAdministrativeCosts.Text, txtDiscount.Text, txtTotalCost.Text, txtDescription.Text,
+                            DateTime.Now.ToString());
+                    }
+                }
+                else
+                {
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        await db.RepositoryOrder.UpdateAsync(Convert.ToInt32(txtOrderID.Text), dateOrderDate.Text, (rbPaid.Checked) ? true : false, cbCondition.SelectedIndex, cbSenderID.SelectedIndex,
+                            txtSender.Text, txtSenderName.Text, txtMobileSender.Text, txtSenderAddress.Text, cbReceiverID.SelectedIndex, txtReceiver.Text,
+                            txtReceiverName.Text, txtMobileReceiver.Text, txtReceiverAddress.Text, cbPostType.SelectedIndex, cbPackageType.SelectedIndex,
+                            (rbOrigin.Checked) ? true : false, txtWeight.Text, numUDNumber.Text, txtShippingCosts.Text,
+                            //txtServiceCosts.Text,
+                            txtAdministrativeCosts.Text, txtDiscount.Text, txtTotalCost.Text, txtDescription.Text);
+                    }
+                }
+                OpenClos();
+                TextClear();
+                ReView();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -203,12 +318,12 @@ namespace ShippingManagementApp
             OpenClos();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             using (UnitOfWork db = new UnitOfWork())
             {
                 dgvOrder.AutoGenerateColumns = false;
-                //dgvCompany.DataSource = await db.RepositoryPersons.GetSearchAsync(txtSearch.Text);
+                dgvOrder.DataSource = await db.RepositoryOrder.GetSearchAsync(txtSearch.Text);
             }
         }
 

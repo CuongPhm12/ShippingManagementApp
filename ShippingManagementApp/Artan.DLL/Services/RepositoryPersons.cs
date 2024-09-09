@@ -15,15 +15,7 @@ namespace Artan.DLL.Services
         {
             db_Artan = entities;
         }
-        public async Task<bool> DeleteAsync(int id)
-        {
-            try
-            {
-                await Task.Run(() => db_Artan.sp_PersonDelete(id));
-                return true;
-            }
-            catch { return false; }
-        }
+      
 
         public async Task<bool> DuplicateValueAsync(string fullName, string userName)
         {
@@ -83,6 +75,16 @@ namespace Artan.DLL.Services
             try
             {
                 await Task.Run(() => db_Artan.sp_PersonUpdate(personId, firstName, lastName, gender, birthDate, educationID, email, mobile, condition, address, positionID, userName, password, createDate));
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            try
+            {
+                await Task.Run(() => db_Artan.sp_PersonDelete(id));
                 return true;
             }
             catch { return false; }

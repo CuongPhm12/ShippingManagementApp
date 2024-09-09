@@ -31,8 +31,8 @@ namespace ShippingManagementApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Orders));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpPanelTop = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -353,14 +353,14 @@ namespace ShippingManagementApp
             this.dgvOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvOrder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(185)))), ((int)(((byte)(47)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(185)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOrder.ColumnHeadersHeight = 45;
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -420,8 +420,8 @@ namespace ShippingManagementApp
             // Receiver
             // 
             this.Receiver.DataPropertyName = "Receiver";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Receiver.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Receiver.DefaultCellStyle = dataGridViewCellStyle4;
             this.Receiver.HeaderText = "Receiver";
             this.Receiver.Name = "Receiver";
             this.Receiver.ReadOnly = true;
@@ -501,7 +501,7 @@ namespace ShippingManagementApp
             this.panelAddPage1.ForeColor = System.Drawing.Color.Black;
             this.panelAddPage1.Location = new System.Drawing.Point(0, 143);
             this.panelAddPage1.Name = "panelAddPage1";
-            this.panelAddPage1.Size = new System.Drawing.Size(944, 494);
+            this.panelAddPage1.Size = new System.Drawing.Size(0, 494);
             this.panelAddPage1.TabIndex = 21;
             // 
             // gbReceiverPorfile
@@ -519,7 +519,7 @@ namespace ShippingManagementApp
             this.gbReceiverPorfile.Controls.Add(this.panelReceiverAddress);
             this.gbReceiverPorfile.Controls.Add(this.lbMobileReceiver);
             this.gbReceiverPorfile.ForeColor = System.Drawing.Color.Black;
-            this.gbReceiverPorfile.Location = new System.Drawing.Point(12, 254);
+            this.gbReceiverPorfile.Location = new System.Drawing.Point(-460, 254);
             this.gbReceiverPorfile.Name = "gbReceiverPorfile";
             this.gbReceiverPorfile.Size = new System.Drawing.Size(919, 239);
             this.gbReceiverPorfile.TabIndex = 50;
@@ -716,9 +716,9 @@ namespace ShippingManagementApp
             this.gbSenderPorfile.Controls.Add(this.panelSenderAddress);
             this.gbSenderPorfile.Controls.Add(this.lbMobileSender);
             this.gbSenderPorfile.ForeColor = System.Drawing.Color.Black;
-            this.gbSenderPorfile.Location = new System.Drawing.Point(12, 2);
+            this.gbSenderPorfile.Location = new System.Drawing.Point(-460, 2);
             this.gbSenderPorfile.Name = "gbSenderPorfile";
-            this.gbSenderPorfile.Size = new System.Drawing.Size(919, 239);
+            this.gbSenderPorfile.Size = new System.Drawing.Size(926, 239);
             this.gbSenderPorfile.TabIndex = 51;
             this.gbSenderPorfile.TabStop = false;
             this.gbSenderPorfile.Text = "Sender Porfile";
@@ -728,7 +728,7 @@ namespace ShippingManagementApp
             this.lbSenderID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbSenderID.AutoSize = true;
             this.lbSenderID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSenderID.Location = new System.Drawing.Point(68, 38);
+            this.lbSenderID.Location = new System.Drawing.Point(72, 38);
             this.lbSenderID.Name = "lbSenderID";
             this.lbSenderID.Size = new System.Drawing.Size(80, 20);
             this.lbSenderID.TabIndex = 45;
@@ -739,7 +739,7 @@ namespace ShippingManagementApp
             this.panelSender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSender.BackColor = System.Drawing.Color.Gainsboro;
             this.panelSender.Controls.Add(this.txtSender);
-            this.panelSender.Location = new System.Drawing.Point(174, 78);
+            this.panelSender.Location = new System.Drawing.Point(178, 78);
             this.panelSender.Margin = new System.Windows.Forms.Padding(0);
             this.panelSender.Name = "panelSender";
             this.panelSender.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -762,7 +762,7 @@ namespace ShippingManagementApp
             this.lbSender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbSender.AutoSize = true;
             this.lbSender.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSender.Location = new System.Drawing.Point(88, 83);
+            this.lbSender.Location = new System.Drawing.Point(92, 83);
             this.lbSender.Name = "lbSender";
             this.lbSender.Size = new System.Drawing.Size(60, 20);
             this.lbSender.TabIndex = 44;
@@ -773,7 +773,7 @@ namespace ShippingManagementApp
             this.panelSenderName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSenderName.BackColor = System.Drawing.Color.Gainsboro;
             this.panelSenderName.Controls.Add(this.txtSenderName);
-            this.panelSenderName.Location = new System.Drawing.Point(700, 78);
+            this.panelSenderName.Location = new System.Drawing.Point(704, 78);
             this.panelSenderName.Margin = new System.Windows.Forms.Padding(0);
             this.panelSenderName.Name = "panelSenderName";
             this.panelSenderName.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -796,7 +796,7 @@ namespace ShippingManagementApp
             this.panelMobileSender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelMobileSender.BackColor = System.Drawing.Color.Gainsboro;
             this.panelMobileSender.Controls.Add(this.txtMobileSender);
-            this.panelMobileSender.Location = new System.Drawing.Point(684, 33);
+            this.panelMobileSender.Location = new System.Drawing.Point(688, 33);
             this.panelMobileSender.Margin = new System.Windows.Forms.Padding(0);
             this.panelMobileSender.Name = "panelMobileSender";
             this.panelMobileSender.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -819,7 +819,7 @@ namespace ShippingManagementApp
             this.panelSenderID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSenderID.BackColor = System.Drawing.Color.Gainsboro;
             this.panelSenderID.Controls.Add(this.cbSenderID);
-            this.panelSenderID.Location = new System.Drawing.Point(174, 33);
+            this.panelSenderID.Location = new System.Drawing.Point(178, 33);
             this.panelSenderID.Margin = new System.Windows.Forms.Padding(0);
             this.panelSenderID.Name = "panelSenderID";
             this.panelSenderID.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -847,7 +847,7 @@ namespace ShippingManagementApp
             this.lbSenderAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbSenderAddress.AutoSize = true;
             this.lbSenderAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSenderAddress.Location = new System.Drawing.Point(26, 146);
+            this.lbSenderAddress.Location = new System.Drawing.Point(30, 146);
             this.lbSenderAddress.Name = "lbSenderAddress";
             this.lbSenderAddress.Size = new System.Drawing.Size(122, 20);
             this.lbSenderAddress.TabIndex = 43;
@@ -858,7 +858,7 @@ namespace ShippingManagementApp
             this.lbSenderName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbSenderName.AutoSize = true;
             this.lbSenderName.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSenderName.Location = new System.Drawing.Point(548, 83);
+            this.lbSenderName.Location = new System.Drawing.Point(552, 83);
             this.lbSenderName.Name = "lbSenderName";
             this.lbSenderName.Size = new System.Drawing.Size(108, 20);
             this.lbSenderName.TabIndex = 41;
@@ -869,7 +869,7 @@ namespace ShippingManagementApp
             this.panelSenderAddress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSenderAddress.BackColor = System.Drawing.Color.Gainsboro;
             this.panelSenderAddress.Controls.Add(this.txtSenderAddress);
-            this.panelSenderAddress.Location = new System.Drawing.Point(174, 146);
+            this.panelSenderAddress.Location = new System.Drawing.Point(178, 146);
             this.panelSenderAddress.Margin = new System.Windows.Forms.Padding(0);
             this.panelSenderAddress.Name = "panelSenderAddress";
             this.panelSenderAddress.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -892,7 +892,7 @@ namespace ShippingManagementApp
             this.lbMobileSender.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbMobileSender.AutoSize = true;
             this.lbMobileSender.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMobileSender.Location = new System.Drawing.Point(541, 38);
+            this.lbMobileSender.Location = new System.Drawing.Point(545, 38);
             this.lbMobileSender.Name = "lbMobileSender";
             this.lbMobileSender.Size = new System.Drawing.Size(115, 20);
             this.lbMobileSender.TabIndex = 42;
@@ -909,9 +909,9 @@ namespace ShippingManagementApp
             this.panelAddPage2.Controls.Add(this.gbOrderInformation);
             this.panelAddPage2.Controls.Add(this.label7);
             this.panelAddPage2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelAddPage2.Location = new System.Drawing.Point(944, 143);
+            this.panelAddPage2.Location = new System.Drawing.Point(0, 143);
             this.panelAddPage2.Name = "panelAddPage2";
-            this.panelAddPage2.Size = new System.Drawing.Size(0, 494);
+            this.panelAddPage2.Size = new System.Drawing.Size(944, 494);
             this.panelAddPage2.TabIndex = 20;
             // 
             // lbTotalCost
@@ -920,7 +920,7 @@ namespace ShippingManagementApp
             this.lbTotalCost.AutoSize = true;
             this.lbTotalCost.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalCost.ForeColor = System.Drawing.Color.Black;
-            this.lbTotalCost.Location = new System.Drawing.Point(323, 370);
+            this.lbTotalCost.Location = new System.Drawing.Point(795, 370);
             this.lbTotalCost.Name = "lbTotalCost";
             this.lbTotalCost.Size = new System.Drawing.Size(79, 20);
             this.lbTotalCost.TabIndex = 59;
@@ -931,7 +931,7 @@ namespace ShippingManagementApp
             this.panelTotalCost.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelTotalCost.BackColor = System.Drawing.Color.Gainsboro;
             this.panelTotalCost.Controls.Add(this.txtTotalCost);
-            this.panelTotalCost.Location = new System.Drawing.Point(325, 394);
+            this.panelTotalCost.Location = new System.Drawing.Point(797, 394);
             this.panelTotalCost.Margin = new System.Windows.Forms.Padding(0);
             this.panelTotalCost.Name = "panelTotalCost";
             this.panelTotalCost.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -955,7 +955,7 @@ namespace ShippingManagementApp
             this.panelDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelDescription.BackColor = System.Drawing.Color.Gainsboro;
             this.panelDescription.Controls.Add(this.txtDescription);
-            this.panelDescription.Location = new System.Drawing.Point(-346, 372);
+            this.panelDescription.Location = new System.Drawing.Point(126, 372);
             this.panelDescription.Margin = new System.Windows.Forms.Padding(0);
             this.panelDescription.Name = "panelDescription";
             this.panelDescription.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -979,7 +979,7 @@ namespace ShippingManagementApp
             this.lbDescription.AutoSize = true;
             this.lbDescription.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDescription.ForeColor = System.Drawing.Color.Black;
-            this.lbDescription.Location = new System.Drawing.Point(-464, 377);
+            this.lbDescription.Location = new System.Drawing.Point(8, 377);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(91, 20);
             this.lbDescription.TabIndex = 54;
@@ -1001,7 +1001,7 @@ namespace ShippingManagementApp
             this.gbOrderCost.Controls.Add(this.label2);
             this.gbOrderCost.Controls.Add(this.lbDiscount);
             this.gbOrderCost.ForeColor = System.Drawing.Color.Black;
-            this.gbOrderCost.Location = new System.Drawing.Point(-460, 206);
+            this.gbOrderCost.Location = new System.Drawing.Point(12, 206);
             this.gbOrderCost.Name = "gbOrderCost";
             this.gbOrderCost.Size = new System.Drawing.Size(919, 138);
             this.gbOrderCost.TabIndex = 57;
@@ -1203,7 +1203,7 @@ namespace ShippingManagementApp
             this.gbOrderInformation.Controls.Add(this.lbNumber);
             this.gbOrderInformation.Controls.Add(this.label6);
             this.gbOrderInformation.ForeColor = System.Drawing.Color.Black;
-            this.gbOrderInformation.Location = new System.Drawing.Point(-460, 20);
+            this.gbOrderInformation.Location = new System.Drawing.Point(12, 20);
             this.gbOrderInformation.Name = "gbOrderInformation";
             this.gbOrderInformation.Size = new System.Drawing.Size(919, 154);
             this.gbOrderInformation.TabIndex = 58;
@@ -1435,7 +1435,7 @@ namespace ShippingManagementApp
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(448, 432);
+            this.label7.Location = new System.Drawing.Point(920, 432);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 17);
             this.label7.TabIndex = 55;

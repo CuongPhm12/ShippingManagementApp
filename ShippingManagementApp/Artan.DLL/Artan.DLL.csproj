@@ -111,11 +111,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepositoryCompanies.cs" />
     <Compile Include="Repository\IRepositoryCondition.cs" />
+    <Compile Include="Repository\IRepositoryOrders.cs" />
     <Compile Include="Repository\IRepositoryPackage.cs" />
     <Compile Include="Repository\IRepositoryPersons.cs" />
     <Compile Include="Repository\IRepositoryPost.cs" />
     <Compile Include="Services\RepositoryCompanies.cs" />
     <Compile Include="Services\RepositoryCondition.cs" />
+    <Compile Include="Services\RepositoryOrders.cs" />
     <Compile Include="Services\RepositoryPackage.cs" />
     <Compile Include="Services\RepositoryPersons.cs" />
     <Compile Include="Services\RepositoryPost.cs" />

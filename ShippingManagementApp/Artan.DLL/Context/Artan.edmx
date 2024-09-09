@@ -321,7 +321,6 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
           <Parameter Name="Discount" Type="nvarchar" Mode="In" />
           <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
           <Parameter Name="Description" Type="nvarchar" Mode="In" />
-          <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PersonID" Type="int" Mode="In" />
@@ -610,7 +609,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             <End Role="tbl_Orders" EntitySet="tbl_Orders" />
           </AssociationSet>
           <FunctionImport Name="sp_OrderDelete">
-            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          <Parameter Name="OrderID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_OrderInsert">
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
@@ -640,7 +639,7 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             <Parameter Name="CreateDate" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_OrderSearch" ReturnType="Collection(Artan_DBModel.sp_OrderSearch_Result)">
-            <Parameter Name="SearchName" Mode="In" Type="String" />
+          <Parameter Name="SearchName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_OrderUpdate">
             <Parameter Name="OrderID" Mode="In" Type="Int32" />
@@ -667,7 +666,6 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
             <Parameter Name="Discount" Mode="In" Type="String" />
             <Parameter Name="TotalCost" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
-            <Parameter Name="CreateDate" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_PersonSearch_Result">

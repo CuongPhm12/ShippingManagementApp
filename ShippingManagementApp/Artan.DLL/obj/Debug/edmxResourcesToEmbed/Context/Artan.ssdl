@@ -316,7 +316,6 @@ warning 6002: The table/view 'DX_TEST.dbo.vw_Persons' does not have a primary ke
     <Parameter Name="Discount" Type="nvarchar" Mode="In" />
     <Parameter Name="TotalCost" Type="nvarchar" Mode="In" />
     <Parameter Name="Description" Type="nvarchar" Mode="In" />
-    <Parameter Name="CreateDate" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_PersonDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PersonID" Type="int" Mode="In" />

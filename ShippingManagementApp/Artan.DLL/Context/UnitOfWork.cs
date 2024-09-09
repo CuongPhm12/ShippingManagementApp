@@ -75,6 +75,19 @@ namespace Artan.DLL.Context
                 return repositoryCondition;
             }
         }
+
+        private IRepositoryOrders repositoryOrder;
+        public IRepositoryOrders RepositoryOrder
+        {
+            get
+            {
+                if (repositoryOrder == null)
+                {
+                    repositoryOrder = new RepositoryOrders(dbArtan);
+                }
+                return repositoryOrder;
+            }
+        }
         public void Dispose()
         {
             dbArtan.Dispose();

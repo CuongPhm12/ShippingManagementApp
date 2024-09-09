@@ -422,7 +422,7 @@ namespace Artan.DLL.Context
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_OrderSearch_Result>("sp_OrderSearch", searchNameParameter);
         }
     
-        public virtual int sp_OrderUpdate(Nullable<int> orderID, string orderDate, Nullable<bool> paymentStatus, Nullable<int> conditionID, Nullable<int> senderID, string sender, string senderName, string senderMobile, string senderAddress, Nullable<int> receiverID, string receiver, string receiverName, string receiverMobile, string receiverAddress, Nullable<int> postID, Nullable<int> packageID, Nullable<bool> payment, string weight, string number, string shippingCosts, string adminstrativeCosts, string discount, string totalCost, string description, string createDate)
+        public virtual int sp_OrderUpdate(Nullable<int> orderID, string orderDate, Nullable<bool> paymentStatus, Nullable<int> conditionID, Nullable<int> senderID, string sender, string senderName, string senderMobile, string senderAddress, Nullable<int> receiverID, string receiver, string receiverName, string receiverMobile, string receiverAddress, Nullable<int> postID, Nullable<int> packageID, Nullable<bool> payment, string weight, string number, string shippingCosts, string adminstrativeCosts, string discount, string totalCost, string description)
         {
             var orderIDParameter = orderID.HasValue ?
                 new ObjectParameter("OrderID", orderID) :
@@ -520,11 +520,7 @@ namespace Artan.DLL.Context
                 new ObjectParameter("Description", description) :
                 new ObjectParameter("Description", typeof(string));
     
-            var createDateParameter = createDate != null ?
-                new ObjectParameter("CreateDate", createDate) :
-                new ObjectParameter("CreateDate", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OrderUpdate", orderIDParameter, orderDateParameter, paymentStatusParameter, conditionIDParameter, senderIDParameter, senderParameter, senderNameParameter, senderMobileParameter, senderAddressParameter, receiverIDParameter, receiverParameter, receiverNameParameter, receiverMobileParameter, receiverAddressParameter, postIDParameter, packageIDParameter, paymentParameter, weightParameter, numberParameter, shippingCostsParameter, adminstrativeCostsParameter, discountParameter, totalCostParameter, descriptionParameter, createDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_OrderUpdate", orderIDParameter, orderDateParameter, paymentStatusParameter, conditionIDParameter, senderIDParameter, senderParameter, senderNameParameter, senderMobileParameter, senderAddressParameter, receiverIDParameter, receiverParameter, receiverNameParameter, receiverMobileParameter, receiverAddressParameter, postIDParameter, packageIDParameter, paymentParameter, weightParameter, numberParameter, shippingCostsParameter, adminstrativeCostsParameter, discountParameter, totalCostParameter, descriptionParameter);
         }
     }
 }
